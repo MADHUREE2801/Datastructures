@@ -1,0 +1,206 @@
+//EX 9)  BST
+
+#include<iostream.h>
+#include<conio.h>
+
+class BST
+{
+public: struct node
+	 {
+	  int data;
+	  node *left,*right;
+	 }*root;
+	 BST()
+	 {
+	  root=NULL;
+	 }
+	 struct node* create(int data)
+	 {
+	  struct node* ptr=new node();
+	  ptr->data=data;
+	  ptr->left=NULL;
+	  ptr->right=NULL;
+	  return ptr;
+	 }
+	  struct node* insert(struct node* root,int data)
+	  {
+	   if(root==NULL)
+	    root=create(data);
+	   else if(data<root->data)
+	     root->left=insert(root->left,data);
+	   else if(data>root->data)
+	     root->right=insert(root->right,data);
+	   return root;
+	   }
+
+	   struct node* Delete(struct node* root,int x)
+	   {
+	     if(root==NULL)
+	       return NULL;
+
+	     else if(x<root->data)
+	       root->left=Delete(root->left,x);
+	     else if(x>root->data)
+	       root->right=Delete(root->right,x);
+	     else
+	     {
+	       if(root->left==NULL)
+	       {
+		struct node *p=root->right;
+		delete root;
+		return p;
+	       }
+	       else if(root->right==NULL)
+	       {
+		struct node*p=root->left;
+		delete root;
+		return p;
+	       }
+	       struct node *p=minvalue(root->right);
+	       root->data=p->data;
+	       root->right=Delete(root->right,p->data);
+	     }
+
+	     return root;
+	   }
+
+	   int search(struct node *root,int x)
+	   {
+	     if(root==NULL)
+	       return 0;
+	     else if(x<root->data)
+	      search(root->left,x);
+	     else if(x>root->data)
+	      search(root->right,x);
+	     else if(x==root->data)
+	      return 1;
+	   }
+
+	   struct node*minvalue(struct node *root)
+	   {
+	    while(root!=NULL &&root->left!=NULL)
+	       root=root->left;
+	    
+	       return root;
+	    }
+
+	    struct node*maxvalue(struct node*root)
+	    {
+	     while(root!=NULL &&root->right!=NULL)
+	       root=root->right;
+	     
+	       return root;
+	     }
+	     void inorder(struct node*root)
+	     {
+	      if(root->left!=NULL)
+	       inorder(root->left);
+	      cout<<root->data<<" ";
+	      if(root->right!=NULL)
+		inorder(root->right);
+	      }
+	      void preorder(struct node*root)
+	      {
+	      cout<<root->data<<" ";
+	      if(root->left!=NULL)
+		preorder(root->left);
+	      if(root->right!=NULL)
+		preorder(root->right);
+	      }
+	      void postorder(struct node *root)
+	      {
+	       if(root->left!=NULL)
+		 postorder(root->left);
+	       if(root->right!=NULL)
+		 postorder(root->right);
+	       cout<<root->data<<" ";
+	       }
+};
+
+void main()
+{
+ clrscr();
+ BST b;
+ int op;
+ char ch;
+ int n,x,data;
+ do
+ {
+  cout<<"\nMAIN MENU: ";
+  cout<<"\n1INSERT 2DELETE 3SEARCH 4INORDER 5PEORDER 6POSTORDER 7MINVALUE 8MAXVALUE"  ;
+  cout<<"\nENTER THE CHOICE: ";
+  cin>>op;
+  switch(op)
+  {
+   case 1: cout<<"\nENTER THE NO OF NODES: ";
+	   cin>>n;
+	   for(int i=0;i<n;i++)
+	   {
+	     cout<<"\nENTER THE DATA: ";
+	     cin>>data;
+	     b.root=b.insert(b.root,data);
+	   }
+	   break;
+  case 2: cout<<"\nENTER THE DATA OF THE NODE TO BE DELETED: ";
+	   cin>>x;
+	   b.root=b.Delete(b.root,x);
+	   break;
+  case 3: cout<<"\nENTER THE DATA OF THE NODE TO BE SEARCHED: ";
+	   cin>>x;
+	   int flag=b.search(b.root,x);
+	   if(flag==0)
+	     cout<<"\nNOT FOUND";
+	   else
+	    cout<<"\nFOUND";
+	   break;
+  case 4: cout<<"\n INORDER TRAVERSAL: ";
+	  b.inorder(b.root);
+	  break;
+  case 5: cout<<"\n PREORDER TRAVERSAL: ";
+	  b.preorder(b.root);
+	  break;
+  case 6: cout<<"\nPOSTORDER TRAVERSAL: ";
+	  b.postorder(b.root);
+	  break;
+  case 7: cout<<"\n MIN VALUE IS: "<<(b.minvalue(b.root))->data;
+
+	  break;
+  case 8: cout<<"\nMAX VALUE IS: "<<(b.maxvalue(b.root))->data;
+
+	  break;
+   }
+  cout<<"\nDO YOU WANT TO CONTINUE: ";
+  cin>>ch;
+  }while(ch=='Y'||ch=='y');
+  getch();
+ }
+
+
+ /*
+
+
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1INSERT 2DELETE 3SEARCH 4INORDER 5PEORDER 6POSTORDER 7MINVALUE 8MAXVALUE        
+ENTER THE CHOICE: 4                                                             
+                                                                                
+ INORDER TRAVERSAL: 2 3 4 6 7 9                                                 
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1INSERT 2DELETE 3SEARCH 4INORDER 5PEORDER 6POSTORDER 7MINVALUE 8MAXVALUE        
+ENTER THE CHOICE: 2                                                             
+                                                                                
+ENTER THE DATA OF THE NODE TO BE DELETED: 6                                     
+                                                                                
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1INSERT 2DELETE 3SEARCH 4INORDER 5PEORDER 6POSTORDER 7MINVALUE 8MAXVALUE        
+ENTER THE CHOICE: 4
+
+ INORDER TRAVERSAL: 2 3 4 7 9
+DO YOU WANT TO CONTINUE: n
+
+				  */

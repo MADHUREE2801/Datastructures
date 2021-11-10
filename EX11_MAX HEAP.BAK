@@ -1,0 +1,119 @@
+//EX11) MAX HEAP
+#include<iostream.h>
+#include<conio.h>
+#define n 30
+
+class heap
+{
+  private:
+    int h[n],size;
+
+  public:
+    heap()
+    {
+      size=0;
+    }
+
+    void swap(int *a,int *b)
+    {
+     int t=*a;
+     *a=*b;
+     *b=t;
+     }
+    void insert(int k)
+    {
+     size++;
+     for(int i=size;k>h[i/2]&& i>1;i/=2)
+      h[i]=h[i/2];
+
+     h[i]=k;
+    }
+
+    void Delete()
+    {
+     int m,max;
+     m=h[1];
+     h[1]=h[size];
+     size--;
+     for(int i=1;i<size;i++)
+     {
+      if(h[2*i]>h[2*i+1])
+       max=2*i;
+      else
+       max=(2*i+1);
+
+      if(h[max]>h[i] && max<=size)
+	swap(&h[max],&h[i]);
+
+      }
+  }
+    void print()
+    {
+     for(int i=1;i<=size;i++)
+      cout<<h[i]<<" ";
+     }
+
+  };
+
+  void main()
+  {
+   clrscr();
+   heap h;
+   int op,data;
+   char ch;
+
+   do
+   {
+    cout<<"\nMAIN MENU:"<<"\n1.INSERT"<<"\n2.DELETE"<<"\n3.PRINT";
+    cout<<"\nENTER YOUR OPTION:";
+    cin>>op;
+    switch(op)
+    {
+     case 1:
+	   cout<<"\nENTER THE VALUE TO BE INSERTED:";
+	   cin>>data;
+	   h.insert(data);
+	   break;
+    case 2:
+	   h.Delete();
+	   cout<<"\nDeleted";
+	   break;
+   case 3:
+	  cout<<"\nELEMENTS ARE:";
+	  h.print();
+	  break;
+    }
+
+    cout<<"\nDO YOU WANT TO CONTINUE-Y OR N:";
+    cin>>ch;
+  }while(ch=='y'||ch=='Y');
+  getch();
+}
+
+
+/*
+2.DELETE
+3.PRINT                                                                         
+ENTER YOUR OPTION:3                                                             
+                                                                                
+ELEMENTS ARE:90 80 70 50 60                                                     
+DO YOU WANT TO CONTINUE-Y OR N:y                                                
+                                                                                
+MAIN MENU:                                                                      
+1.INSERT                                                                        
+2.DELETE                                                                        
+3.PRINT                                                                         
+ENTER YOUR OPTION:2                                                             
+                                                                                
+Deleted                                                                         
+DO YOU WANT TO CONTINUE-Y OR N:y                                                
+                                                                                
+MAIN MENU:                                                                      
+1.INSERT                                                                        
+2.DELETE                                                                        
+3.PRINT                                                                         
+ENTER YOUR OPTION:3
+
+ELEMENTS ARE:80 60 70 50
+DO YOU WANT TO CONTINUE-Y OR N:n
+*/

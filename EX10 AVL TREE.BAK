@@ -1,0 +1,256 @@
+//EX 10 AVL TREE
+
+#include<iostream.h>
+#include<conio.h>
+
+class AVL
+{
+public:
+ struct node
+ {
+  int data;
+  int height;
+  struct node *left;
+  struct node *right;
+ }*root;
+ AVL()
+ {
+  root=NULL;
+ }
+ struct node* create(int data)
+ {
+  struct node *ptr=new struct node();
+  ptr->data=data;
+  ptr->left=NULL;
+  ptr->right=NULL;
+  root=ptr;
+  return root;
+ }
+ int max(int a,int b)
+ {
+  return (a>b?a:b);
+ }
+ int height(struct node* t)
+ {
+  if(t==NULL)
+   return 0;
+  else
+  {
+   t->height=1;
+   return t->height;
+  }
+ }
+ int balance_factor(struct node *t)
+ {
+  if(t==NULL)
+   return 0;
+  else
+  {
+   int bal=(t->left->height)-(t->right->height);
+    return bal;
+  }
+ }
+  struct node * left_rotation(struct node * x)
+  {
+   struct node *y=x->right;
+   struct node *z=y->left;
+   y->left=x;
+   x->right=z;
+   x->height=1+max(height(x->left),height(x->right));
+   y->height=1+max(height(y->left),height(y->right));
+   return y;
+  }
+  struct node *right_rotation(struct node *x)
+  {
+   struct node *y=x->left;
+   struct node *z=y->right;
+   y->right=x;
+   x->left=z;
+   x->height=1+max(height(x->left),height(x->right));
+   y->height=1+max(height(y->left),height(y->right));
+   return y;
+  }
+
+  struct node *insert(struct node* root,int data)
+ {
+  if(root==NULL)
+   root=create(data);
+  else if(data<root->data)
+    root->left=insert(root->left,data);
+  else if(data>root->data)
+   root->right=insert(root->right,data);
+  root->height=1+max(height(root->left),height(root->right));
+  int balance=balance_factor(root);
+  if(balance>1 && data<root->left->data)     //LS LC
+    return right_rotation(root);
+  else if(balance>1 && data>root->left->data) //LS RC
+  {
+    root->left=left_rotation(root->left);
+    return right_rotation(root);
+  }
+  else if(balance<-1 && data>root->right->data) //RS RC
+    return left_rotation(root);
+  else if(balance <-1 && data<root->right->data) //RS LC
+  {
+   root->right=right_rotation(root->right);
+   return left_rotation(root);
+  }
+  return root;
+ }
+ struct node *Delete(struct node *root,int k)
+ {
+  if(root==NULL)
+   return NULL;
+  else if(k<root->data)
+    root->left=Delete(root->left,k);
+  else if(k>root->data)
+    root->right=Delete(root->right,k);
+  else
+  {
+    if(root->left==NULL)
+    {
+     struct node *p=root->right;
+     delete root;
+     return p;
+    }
+    else if(root->right==NULL)
+    {
+     struct node *p=root->left;
+     delete root;
+     return p;
+    }
+    else
+    {
+     struct node *p=minvalue(root->right);
+     root->data=p->data;
+     root->right=Delete(root->right,p->data);
+    }
+  }
+    root->height=1+max(height(root->left),height(root->right));
+    int balance=balance_factor(root);
+    if(balance>1 && balance_factor(root->left)>=0)   //LS LC
+      return right_rotation(root);
+     else if(balance>1 && balance_factor(root->left)<0) //LS RC
+     {
+      root->left=left_rotation(root->left);
+      return right_rotation(root);
+     }
+
+
+   else if(balance<1 && balance_factor(root->right)<=0) //RS RC
+     return left_rotation(root);
+    else if(balance<1 && balance_factor(root->right)>0) //RS LC
+    {
+     root->right=right_rotation(root->right);
+     return left_rotation(root);
+    }
+  return root;
+ }
+
+ void inorder(struct node*root)
+ {
+  if(root->left!=NULL)
+    inorder(root->left);
+  cout<<root->data<<" ";
+  if(root->right!=NULL)
+    inorder(root->right);
+ }
+ struct node* minvalue(struct node *root)
+ {
+  while(root!=NULL && root->left!=NULL)
+    root=root->left;
+  return root;
+ }
+};
+
+void main()
+{
+ clrscr();
+ AVL A;
+ int op,n,i,k,data;
+ char ch;
+ do
+ {
+  cout<<"\nMAIN MENU: ";
+  cout<<"\n1insert 2delete 3inorder: ";
+  cout<<"\nENTER THE CHOICE: ";
+  cin>>op;
+  switch(op)
+  {
+   case 1: cout<<"\nENTER THE NO OF NODES: ";
+	   cin>>n;
+	   for(int i=0;i<n;i++)
+	   {
+	    cout<<"\nENTER THE DATA: ";
+	    cin>>data;
+	    A.root=A.insert(A.root,data);
+	   }
+	   break;
+   case 2: cout<<"\nENTER THE DATA OF THE NODE TO BE DELETED: ";
+	   cin>>k;
+	   A.root=A.Delete(A.root,k);
+	   break;
+   case 3: cout<<"\nINORDER TRAVERSAL:";
+	   A.inorder(A.root);
+	   break;
+  }
+  cout<<"\nDO YOU WANT TO CONTINUE: ";
+  cin>>ch;
+ }while(ch=='y'||ch=='Y');
+getch();
+
+}
+
+/*
+
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 3                                                             
+                                                                                
+INORDER TRAVERSAL:1 2 3 4 5 6 7 15 16                                           
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 2                                                             
+                                                                                
+ENTER THE DATA OF THE NODE TO BE DELETED: 15                                    
+                                                                                
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 3                                                             
+                                                                                
+INORDER TRAVERSAL:1 2 3 4 5 6 7 16 0 0 0
+DO YOU WANT TO CONTINUE:
+n
+Null pointer assignment
+						*/
+/*
+DO YOU WANT TO CONTINUE: y
+                                                                                
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 3                                                             
+                                                                                
+INORDER TRAVERSAL:10 20 40 50                                                   
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 2                                                             
+                                                                                
+ENTER THE DATA OF THE NODE TO BE DELETED: 20                                    
+                                                                                
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1insert 2delete 3inorder:                                                       
+ENTER THE CHOICE: 3                                                             
+
+INORDER TRAVERSAL:40 50
+DO YOU WANT TO CONTINUE: n
+Null pointer assignment
+
+				  */

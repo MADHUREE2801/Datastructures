@@ -1,0 +1,129 @@
+//EX12 BFS
+#include<iostream.h>
+#include<conio.h>
+#define max 30
+
+int queue[max];
+int visit[max];
+int n;
+int rear=-1;
+int front=-1;
+int A[20][20];
+
+void enqueue(int ele)
+{
+ queue[++rear]=ele;
+}
+int dequeue()
+{
+   int k=queue[++front];
+   return k;
+}
+
+void BFS(int value)
+{
+ int i,j;
+ visit[value]=1;
+ enqueue(value);
+ while(rear!=front)
+ {
+   value =dequeue();
+   cout<<value<<" ";
+
+  for(i=0;i<n;i++)
+  {
+   if(A[value][i]==1)
+   {
+    if(visit[i]==0)
+    {
+     visit[i]=1;
+     enqueue(i);
+    }
+   }
+
+ }
+
+}
+
+
+
+}
+
+
+
+void main()
+{
+ clrscr();
+ cout<<"\nENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ int i,j;
+ cout<<"\nENTER THE ADJACENCY MATRIX: ";
+ for(i=0;i<n;i++)
+ {
+  visit[i]=0;
+  for(j=0;j<n;j++)
+   cin>>A[i][j];
+ }
+ int source;
+ cout<<"\nENTER THE SOURCE VERTEX: ";
+ cin>>source;
+ BFS(source);
+ getch();
+}
+
+
+/*
+
+ENTER THE NO OF ELEMENTS: 6                                                     
+                                                                                
+ENTER THE ADJACENCY MATRIX:
+ 0 1 1 0 0 0                                         
+1 0 0 1 1 0                                                                     
+1 0 0 0 0 1                                                                     
+0 1 0 0 0 0                                                                     
+0 1 0 0 0 0                                                                     
+0 0 1 0 0 0                                                                     
+                                                                                
+ENTER THE SOURCE VERTEX: 0                                                      
+0 1 2 3 4 5 */
+
+/*
+
+ENTER THE NO OF ELEMENTS: 6                                                     
+                                                                                
+ENTER THE ADJACENCY MATRIX:                                                     
+0 1 1 0 0 0                                                                     
+1 0 0 1 1 0                                                                     
+1 0 0 0 0 1                                                                     
+0 1 0 0 0 0                                                                     
+0 1 0 0 0 0                                                                     
+0 0 1 0 0 0                                                                     
+                                                                                
+ENTER THE SOURCE VERTEX: 1                                                      
+1 0 3 4 2 5                                                                     
+		     */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

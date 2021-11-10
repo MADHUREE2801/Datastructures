@@ -1,0 +1,82 @@
+//EX13 DFS
+#include<iostream.h>
+#include<conio.h>
+int A[20][20],n,visited[20],top=-1,stack[30];
+
+void push(int data)
+{
+ top++;
+ stack[top]=data;
+ }
+ int pop()
+ {
+  int k=stack[top];
+  top--;
+  return k;
+ }
+
+ void DFS(int val)
+ {
+  push(val);
+  visited[val]=1;
+  while(top!=-1)
+  {
+
+   val=pop();
+   cout<<val<<" ";
+   for(int i=0;i<n;i++)
+   {
+    if(A[val][i]==1)
+    {
+      if(visited[i]==0)
+      {
+       visited[i]=1;
+       push(i);
+       }
+      }
+    }
+   }
+ }
+
+ void main()
+ {
+   clrscr();
+  int j,source;
+  cout<<"\nENTER THE NO OF NODES:";
+  cin>>n;
+  cout<<"\nENTER THE ADJACENCY MATRIX:";
+  for(int i=0;i<n;i++)
+   for(j=0;j<n;j++)
+    cin>>A[i][j];
+
+  cout<<"\nENTER THE SOURCE VERTEX:";
+  cin>>source;
+  DFS(source);
+  getch();
+  }
+/*
+
+ENTER THE NO OF NODES:7                                                         
+                                                                                
+ENTER THE ADJACENCY MATRIX:0 1 1 0 0 0 0                                        
+1 0 0 1 1 0 0                                                                   
+1 0 0 0 0 1 1                                                                   
+0 1 0 0 0 0 0                                                                   
+0 1 0 0 0 0 0                                                                   
+0 0 1 0 0 0 0                                                                   
+0 0 1 0 0 0 0                                                                   
+                                                                                
+ENTER THE SOURCE VERTEX:0                                                       
+0 2 6 5 1 4 3                                                                   
+                                                                                
+ */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

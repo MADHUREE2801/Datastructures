@@ -1,0 +1,74 @@
+// 1aINSERTION_SORT.CPP
+
+#include<iostream.h>
+#include<conio.h>
+
+void display(int arr[],int n)
+{
+ for(int i=0;i<n;i++)
+  cout<<arr[i]<<" ";
+}
+
+void insertion_sort(int arr[],int n)
+{
+ int i,j,tmp;
+
+ for(i=1;i<n;i++) //sorting
+ {
+  j=i-1;
+  tmp=arr[i]; //current element
+
+  while(tmp<arr[j] && j>=0)
+  {
+   arr[j+1]=arr[j];
+   j--;
+  }
+
+  arr[j+1]=tmp;
+}
+}
+void main()
+{
+ clrscr();
+ int arr[10],n;
+ cout<<"\nENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ cout<<"\nENTER THE ARRAY ELEMENTS: ";
+ for(int i=0;i<n;i++)
+  cin>>arr[i];
+ cout<<"\nARRAY BEFORE SORTING: ";
+ display(arr,n);
+ insertion_sort(arr,n);
+ cout<<"\nARRAY AFTER SORTING: ";
+ display(arr,n);
+ getch();
+}
+
+/*
+ SAMPLE I/O:
+
+
+ENTER THE NO OF ELEMENTS: 5                                                     
+                                                                                
+ENTER THE ARRAY ELEMENTS: 9 5 1 4 1                                             
+                                                                                
+ARRAY BEFORE SORTING: 9 5 1 4 1                                                 
+ARRAY AFTER SORTING: 1 1 4 5 9    */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

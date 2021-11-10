@@ -1,0 +1,72 @@
+//bubble sort
+
+#include<iostream.h>
+#include<conio.h>
+
+void bubble_sort(int arr[],int n)
+{
+ int i,j,temp;
+ for(i=0;i<n-1;i++) //i->iteration
+ {
+  for(j=0;j<n-i-1;j++)
+  {
+   if(arr[j]>arr[j+1])
+   {
+      temp=arr[j];
+      arr[j]=arr[j+1];
+      arr[j+1]=temp;
+    }
+   }
+  }
+
+}
+
+
+void display(int arr[],int n)
+{
+ for(int i=0;i<n;i++)
+ {
+  cout<<arr[i]<<" ";
+  }
+ }
+
+ void main()
+ {
+  clrscr();
+  int arr[]={23,-1,7,10,0,6};
+  int n=6;
+  cout<<"BEFORE SORTING:";
+  display(arr,n);
+  bubble_sort(arr,n);
+  cout<<"\nAFTER SORTING:";
+  display(arr,n);
+  getch();
+  }
+
+  //sample input and output
+  /*
+  BEFORE SORTING:23 -1 7 10 0 6
+AFTER SORTING:-1 0 6 7 10 23
+*/
+
+
+
+
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

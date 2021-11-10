@@ -1,0 +1,121 @@
+//6B STACK USING LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+class stack
+{
+private:
+       struct node
+       {
+	int data;
+	node *next;
+       }*top;
+public: stack()
+	{
+	 top=NULL;
+	}
+	void push(int data)
+	{
+	 struct node *ptr=new node();
+	 ptr->data=data;
+	 ptr->next=top;
+	 top=ptr;
+	}
+	void pop()
+	{
+	 struct node*temp=top;
+	 if(top==NULL)
+	  cout<<"\nSTACK EMPTY--CANNOT POP OUT";
+	 else
+	 {
+	  cout<<top->data<<" ";
+	  top=top->next;
+	  delete temp;
+	 }
+       }
+	void print()
+	{
+	 struct node *temp=top;
+	 if(top==NULL)
+	   cout<<"\nSTACK EMPTY --CANNOT PRINT";
+	 else
+	 {
+	  while(temp!=NULL)
+	  {
+	   cout<<temp->data<<" ";
+	   temp=temp->next;
+	  }
+	 }
+	}
+	void peek()
+	{
+	 if(top==NULL)
+	  cout<<"\nSTACK EMPTY";
+	 else
+	  cout<<top->data;
+	 }
+};
+
+
+void main()
+{
+ clrscr();
+ stack s;
+ int a;
+ char ch;
+ int data;
+ do
+ {
+  cout<<"\nMAIN MENU: ";
+  cout<<"\n1push 2pop 3print 4peek: ";
+  cout<<"\nENTER THE CHOICE: ";
+  cin>>a;
+  switch(a)
+  {
+   case 1: cout<<"\nENTER THE DATA: ";
+	   cin>>data;
+	   s.push(data);
+	   break;
+   case 2: s.pop();
+	   break;
+   case 3: s.print();
+	   break;
+   case 4: s.peek();
+	   break;
+   }
+   cout<<"\nDO YOU WANT TO CONTINUE: ";
+   cin>>ch;
+  }while(ch=='y' ||ch=='Y');
+ getch();
+}
+
+/*
+1push 2pop 3print 4peek:
+ENTER THE CHOICE: 1
+
+ENTER THE DATA: 40
+
+DO YOU WANT TO CONTINUE: y
+
+MAIN MENU:
+1push 2pop 3print 4peek:
+ENTER THE CHOICE: 2
+40
+DO YOU WANT TO CONTINUE: y
+
+MAIN MENU:
+1push 2pop 3print 4peek:
+ENTER THE CHOICE: 3
+30 20 10
+DO YOU WANT TO CONTINUE: y
+
+MAIN MENU:
+1push 2pop 3print 4peek:
+ENTER THE CHOICE: 4
+30
+DO YOU WANT TO CONTINUE: n
+
+
+
+*/

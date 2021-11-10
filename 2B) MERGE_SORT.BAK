@@ -1,0 +1,102 @@
+// 2B) MERGE SORT(DIVIDE,CONQUER,MERGE)
+
+#include<iostream.h>
+#include<conio.h>
+
+void display(int arr[],int n)
+{
+ for(int i=0;i<n;i++)
+  cout<<arr[i]<<" ";
+}
+
+void merge(int arr[],int l,int m,int r)
+{
+ int i,j,k,temp[10];
+ i=l;
+ j=m+1;
+ k=l;
+ while(i<=m && j<=r)
+ {
+  if(arr[i]<arr[j])
+  {
+   temp[k]=arr[i];
+   i++;
+   k++;
+  }
+  else
+  {
+   temp[k]=arr[j];
+   j++;
+   k++;
+  }
+ }
+ while(i<=m)
+ {
+  temp[k]=arr[i];
+  i++;
+  k++;
+ }
+
+ while(j<=r)
+ {
+  temp[k]=arr[j];
+  j++;
+  k++;
+ }
+ for(i=l;i<=r;i++)
+  arr[i]=temp[i];
+}
+
+void merge_sort(int arr[],int l,int r)
+{
+ if(l<r)
+ {
+  int m=(l+r)/2;
+  merge_sort(arr,l,m);
+  merge_sort(arr,m+1,r);
+  merge(arr,l,m,r);
+ }
+}
+
+
+void main()
+{
+ clrscr();
+ int arr[]={100,-1,7,5,23};
+ int n=5;
+ cout<<"ARRAY BEFORE SORTING: ";
+ display(arr,n);
+ merge_sort(arr,0,n-1);
+ cout<<"\nARRAY AFTER SORTING: ";
+ display(arr,n);
+ getch();
+}
+
+
+//sample i/o
+
+ARRAY BEFORE SORTING: 100 -1 7 5 23
+ARRAY AFTER SORTING: -1 5 7 23 100       */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

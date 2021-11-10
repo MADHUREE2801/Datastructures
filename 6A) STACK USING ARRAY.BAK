@@ -1,0 +1,163 @@
+// SATCK USING ARRAY
+
+#include<iostream.h>
+#include<conio.h>
+#define max 5
+class stack
+{
+ private: int arr[max];
+	 int top;
+ public: stack()
+	 {
+	 top=-1;
+	 }
+	 int isempty()
+	 {
+	  if(top==-1)
+	   return 1;
+	  else
+	   return 0;
+	 }
+	 int isfull()
+	 {
+	  if(top==max-1)
+	    return 1;
+	  else
+	    return 0;
+	 }
+	 void push(int x)
+	 {
+	  if(isfull())
+	    cout<<"\nSTACK IS FULL";
+	  else
+	  {
+	   top++;
+	   arr[top]=x;
+	  }
+	 }
+
+	 void pop()
+	 {
+	  if(isempty())
+	   cout<<"\nstack is empty";
+	  else
+	  {
+	   cout<<"\npopped out value is:"<<arr[top];
+	   top--;
+	  }
+	 }
+	 void change(int pos,int x)
+	 {
+	  arr[pos]=x;
+	 }
+	 void peek()
+	 {
+	  if(isempty())
+	  {
+	   cout<<"\n STACK IS EMPTY";
+	  }
+	  else
+	    cout<<"\n peek element is: "<<arr[top];
+	}
+
+        void print()
+       {
+         if(isempty())
+          cout<<"\nSTACK IS EMPTY";
+         else
+          {
+            for(int i=top;i>=0;i--)
+              cout<<arr[i]<<" ";
+          }
+        }
+};
+
+void main()
+{
+ clrscr();
+ stack s;
+
+ int a,x;
+ char ch;
+ int pos,k;
+ do
+ {
+ cout<<"MAIN MENU";
+ cout<<"\n1PUSH 2POP 3ISFULL 4ISEMPTY 5CHANGE 6PEEK 7.PRINT: ";
+
+  cout<<"\nENTER THE CHOICE: ";
+  cin>>a;
+  switch(a)
+  {
+   case 1:{
+	   cout<<"\nENTER THE ELEMENT TO BE PUSHED: ";
+	   cin>>x;
+	   s.push(x);
+	   break;
+	 }
+   case 2:s.pop();
+	  break;
+   case 3:
+	  {
+	  if(s.isfull())
+	   cout<<"\n STACK FULL";
+	  else
+	   cout<<"\n STACK NOT FULL";
+	  break;
+	  }
+   case 4:
+	  {
+	   if(s.isempty())
+	    cout<<"\nSTACK EMPTY";
+	   else
+	    cout<<"\nSTACK NOT EMPTY";
+	   break;
+	  }
+   case 5: {
+	    cout<<"\nENTER THE POSTITION: ";
+	    cin>>pos;
+	    cout<<"\nENTER THE VALUE: ";
+	    cin>>k;
+	    s.change(pos,k);
+	    break;
+	   }
+   case 6: s.peek();
+	   break;
+
+   case 7:s.print();
+           break;
+  }
+  cout<<"\nDO YOU WANT TO CONTINUE: Y OR N: ";
+  cin>>ch;
+ } while(ch=='y'|| ch=='Y');
+ getch();
+}
+
+
+/*
+
+ STACK FULL                                                                     
+DO YOU WANT TO CONTINUE: Y OR N: y                                              
+MAIN MENU                                                                       
+1PUSH 2POP 3ISFULL 4ISEMPTY 5CHANGE 6PEEK:                                      
+ENTER THE CHOICE: 4                                                             
+                                                                                
+STACK NOT EMPTY                                                                 
+DO YOU WANT TO CONTINUE: Y OR N: y                                              
+MAIN MENU                                                                       
+1PUSH 2POP 3ISFULL 4ISEMPTY 5CHANGE 6PEEK:                                      
+ENTER THE CHOICE: 5                                                             
+                                                                                
+ENTER THE POSTITION: 1                                                          
+                                                                                
+ENTER THE VALUE: 11                                                             
+                                                                                
+DO YOU WANT TO CONTINUE: Y OR N: y                                              
+MAIN MENU                                                                       
+1PUSH 2POP 3ISFULL 4ISEMPTY 5CHANGE 6PEEK:                                      
+ENTER THE CHOICE: 6
+
+ peek element is: 50
+DO YOU WANT TO CONTINUE: Y OR N: n
+
+			      */

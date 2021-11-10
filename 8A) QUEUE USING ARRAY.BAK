@@ -1,0 +1,138 @@
+//8A QUEUE USING ARRAY
+
+#include<iostream.h>
+#include<conio.h>
+#define max 10
+
+class queue
+{
+ private: int arr[max];
+	  int front;
+	  int rear;
+ public:
+	queue()
+       {
+	 front=rear=-1;
+       }
+       int isfull()
+       {
+	if(rear==max-1)
+	  return 1;
+	else
+	 return 0;
+       }
+       int isempty()
+       {
+	if(front==-1 && rear==-1)
+	  return 1;
+	else
+	 return 0;
+       }
+       void enqueue(int data)
+       {
+	if(isempty())
+	{
+	  front=rear=0;
+	  arr[rear]=data;
+	}
+	else if(isfull())
+	  cout<<"\nQUEUE IS FULL ";
+	else
+	{
+	 rear++;
+	 arr[rear]=data;
+	}
+       }
+       void dequeue()
+       {
+	 if(isempty())
+	   cout<<"\nQUEUE IS EMPTY";
+	 else if(front==rear)
+	{
+	 cout<<arr[front];
+	 front=rear=-1;
+	}
+	else
+	{
+	 cout<<arr[front];
+	 front++;
+	}
+       }
+
+       void peek()
+       {
+	 if(isempty())
+	   cout<<"\nQUEUE IS EMPTY";
+	 else
+	  cout<<"\nPEEK ELEMENT IS:"<<arr[front];
+       }
+
+       void print()
+       {
+	for(int i=front;i<=rear;i++)
+	   cout<<arr[i]<<"  ";
+	}
+
+ };
+
+ void main()
+ {
+  clrscr();
+  queue q;
+  int a;
+  int data;
+  char ch;
+  do
+  {
+   cout<<"\nMAIN MENU: ";
+   cout<<"\n1ENQUEUE 2DEQUEUE 3PEEK 4PRINT";
+   cout<<"\nENTER THE CHOICE: ";
+   cin>>a;
+   switch(a)
+   {
+    case 1: cout<<"\nENTER THE DATA: ";
+	    cin>>data;
+	    q.enqueue(data);
+	    break;
+    case 2: q.dequeue();
+	    break;
+    case 3: q.peek();
+	    break;
+    case 4: q.print();
+	    break;
+   }
+   cout<<"\nDO YOU WANT TO CONTINUE: ";
+   cin>>ch;
+  }while(ch=='y' || ch=='Y');
+  getch();
+
+ }
+
+
+/*
+MAIN MENU:
+1ENQUEUE 2DEQUEUE 3PEEK 4PRINT                                                  
+ENTER THE CHOICE: 4                                                             
+10  20  30  40                                                                  
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1ENQUEUE 2DEQUEUE 3PEEK 4PRINT                                                  
+ENTER THE CHOICE: 2                                                             
+10                                                                              
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1ENQUEUE 2DEQUEUE 3PEEK 4PRINT                                                  
+ENTER THE CHOICE: 4                                                             
+20  30  40                                                                      
+DO YOU WANT TO CONTINUE: y                                                      
+                                                                                
+MAIN MENU:                                                                      
+1ENQUEUE 2DEQUEUE 3PEEK 4PRINT                                                  
+ENTER THE CHOICE: 3
+
+PEEK ELEMENT IS:20
+DO YOU WANT TO CONTINUE: n
+
+			     */

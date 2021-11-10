@@ -1,0 +1,123 @@
+// 4) ARRAY IMPLEMENTATION OF LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+int arr[10];
+int n;
+void insert()
+{
+ int pos,x;
+ cout<<"\nENTER THE POSITION OF THE ELEMENT TO BE INSERTED: ";
+ cin>>pos;
+ cout<<"\nENETER THE ELEMENT TO BE INSERTED: ";
+ cin>>x;
+ if(pos==n)
+ {
+  arr[pos]=x;
+  n++;
+ }
+ else if(pos>n)
+  cout<<"\n THE ELEMENT CANNOT BE INSERTED";
+ else
+ {
+  for(int i=n;i>pos;i--)
+  {
+   arr[i]=arr[i-1];
+  }
+  arr[pos]=x;
+  n++;
+}
+}
+void display()
+{
+ for(int i=0;i<n;i++)
+  cout<<arr[i]<<"  ";
+}
+void Delete()
+{
+ int x;
+ cout<<"\nENTER THE ELEMENT TO BE DELETED: ";
+ cin>>x;
+ int pos,flag=0;
+ for(int i=0;i<n;i++)
+ {
+  if(arr[i]==x)
+  {  flag=1;
+    pos=i;
+   break;
+  }
+ }
+ if(flag==1)
+ {
+  for(i=pos;i<n;i++)
+  {
+   arr[i]=arr[i+1];
+  }
+  n--;
+ }
+ else
+  cout<<"\n ELEMENT TO BE DELETED IS NOT FOUND";
+}
+
+void find(int k)
+{
+ int flag=0;
+ for(int i=0;i<n;i++)
+ {
+  if(arr[i]==k)
+  {
+   flag=1;
+   break;
+  }
+ }
+ if(flag==1)
+  cout<<"\nELEMENT IS FOUND";
+ else
+  cout<<"\nELEMENT NOT FOUND";
+}
+
+
+void main()
+{
+ clrscr();
+
+ int i;
+ cout<<"ENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ cout<<"\nENTER THE ARRAY ELEMENTS: ";
+ for(i=0;i<n;i++)
+  cin>>arr[i];
+ cout<<"\nMAIN MENU: ";
+ cout<<"\n1.INSERT 2.DISPLAY 3.DELETE 4.FIND:";
+ int a;
+ char ch;
+
+ do
+ {
+ cout<<"\nENTER THE CHOICE: ";
+ cin>>a;
+ switch(a)
+ {
+  case 1: insert();
+	  break;
+  case 2: display();
+	  break;
+  case 3:
+	  Delete();
+	  break;
+
+  case 4:{
+	  int x;
+	  cout<<"\nENTER THE ELEMENT TO BE DELETED: ";
+	  find(x);
+	  break;
+	  }
+  }
+  cout<<"\n DO YOU WANT TO CONTINUE -YES OR NO";
+  cin>>ch;
+  }while(ch=='y'||ch=='Y');
+ getch();
+}
+
+
