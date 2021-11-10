@@ -1,0 +1,248 @@
+//INSERT NODES INTO A SORTED DOUBLY LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 Node *prev;
+	 void create();
+	 void print();
+	 void insert(int x);
+}*head=NULL;
+
+void Node::create()
+{
+ int n,i,data;
+ Node *ptr,*temp;
+ cout<<"\ENTER THE NO OF NODES: ";
+ cin>>n;
+
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+  ptr->prev=NULL;
+  if(head==NULL)
+    head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   ptr->prev=temp;
+   temp=ptr;
+  }
+ }
+}
+
+void Node::print()
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void Node::insert(int x)
+{
+ Node *ptr=head,*k,*temp;
+ k=new Node();
+ k->data=x;
+ k->next=NULL;
+ k->prev=NULL;
+
+ if(x<=head->data)
+ {
+  k->next=head;
+  head->prev=k;
+  head=k;
+ }
+
+ else
+ {
+  while(ptr!=NULL)
+  {
+   if(x>=ptr->data && x<=ptr->next->data)
+   {
+    temp=ptr->next;
+    ptr->next=k;
+    k->prev=ptr;
+    k->next=temp;
+    temp->prev=k;
+    break;
+   }
+
+   else if(ptr->next==NULL &&x>=ptr->data)
+   {
+    ptr->next=k;
+    k->prev=ptr;
+    k->next=NULL;
+    break;
+   }
+   ptr=ptr->next;
+  }
+ }
+
+}
+
+void main()
+{
+ clrscr();
+ Node l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ int x;
+ cout<<"\nENTER THE ELEMENT TO BE INSERTED: ";
+ cin>>x;
+ l.insert(x);
+ cout<<"\nPRINT THE LIST AFTER INSERTION: ";
+ l.print();
+ getch();
+}
+
+
+/* output
+
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE ELEMENT TO BE INSERTED: 10                                            
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+10  10  20  30  40  50   */
+                                                                                
+                                                                                
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE ELEMENT TO BE INSERTED: 35                                            
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+10  20  30  35  40  50     */
+
+
+                                                                                
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE ELEMENT TO BE INSERTED: 60                                            
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+10  20  30  40  50  60    */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE ELEMENT TO BE INSERTED: 40                                            
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+10  20  30  40  40  50     */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE ELEMENT TO BE INSERTED: 5                                             
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+5  10  20  30  40  50       */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

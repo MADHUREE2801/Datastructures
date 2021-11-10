@@ -1,0 +1,75 @@
+#include<iostream.h>
+#include<conio.h>
+int cnt=0;
+int * leader(int arr[100],int n)
+{
+ int i,j,k=0,sum,flag=1;
+ int *l=new int[100];
+ for(i=0;i<n-1;i++)
+ {
+  flag=1;
+  for(j=i+1;j<n;j++)
+  {
+   if(arr[i]<arr[j])
+   {
+    flag=0;
+    break;
+   }
+  }
+   if(flag==1)
+   {
+    l[k]=arr[i];
+    cnt++;
+    k++;
+   }
+ }
+  l[k]=arr[n-1];
+  cnt++;
+  return l;
+ }
+
+ void main()
+ {
+  clrscr();
+  int i,arr[100],n;
+  cout<<"\n ENTER THE NO OF ELEMENTS:";
+  cin>>n;
+  cout<<"\n ENTER THE ARRAY ELEMENTS:";
+  for(i=0;i<n;i++)
+   cin>>arr[i];
+  int *l=leader(arr,n);
+  cout<<"\n LEADER ELEMENTS:";
+  for(i=0;i<cnt;i++)
+   cout<<l[i]<<" ";
+  getch();
+
+  }
+
+
+ /* output
+
+
+ ENTER THE NO OF ELEMENTS:5                                                     
+                                                                                
+ ENTER THE ARRAY ELEMENTS:                                                      
+16                                                                              
+17                                                                              
+15                                                                              
+2                                                                               
+4                                                                               
+                                                                                
+ LEADER ELEMENTS:17 15 4    */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

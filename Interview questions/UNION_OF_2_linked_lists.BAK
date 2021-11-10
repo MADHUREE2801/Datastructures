@@ -1,0 +1,171 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_List
+{
+ public: int data;
+	 Linked_List *next;
+	 void create(Linked_List **head,int n);
+	 void print(Linked_List *head);
+	 void Union(Linked_List **head1 ,Linked_List **head2,int n1,int n2);
+ }*head1=NULL,*head2=NULL,*head3=NULL;
+
+void Linked_List:: create(Linked_List **head,int n)
+{
+ int i,data;
+ Linked_List *ptr,*temp;
+ cout<<"\n";
+ for(i=1;i<=n;i++)
+ {
+  ptr=new Linked_List();
+  cout<<"ENTER THE DATA:";
+  cin>>data;
+  if(*head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   *head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void Linked_List:: print(Linked_List *head)
+{
+Linked_List *ptr=head;
+while(ptr!=NULL)
+{
+cout<<ptr->data<<"  ";
+ptr=ptr->next;
+}
+}
+
+void  Linked_List:: Union(Linked_List **head1,Linked_List **head2,int n1,int n2)
+{
+ int arr[100],i=0,j,t;
+ Linked_List *ptr3,*temp;
+ Linked_List *ptr1=*head1,*ptr2=*head2;
+ while(ptr1!=NULL)
+ {
+  arr[i]=ptr1->data;
+  ptr1=ptr1->next;
+  i++;
+ }
+ while(ptr2!=NULL)
+ {
+  arr[i]=ptr2->data;
+  ptr2=ptr2->next;
+  i++;
+ }
+ int size=n1+n2;
+ int index;
+ /* Removing duplicate elements*/
+ for(i=0;i<size-1;i++)
+ {
+  for(j=i+1;j<size;j++)
+  {
+   if(arr[i]==arr[j])
+   {
+    for(index=i;index<size;index++)
+      arr[index]=arr[index+1];
+    size--;
+    j--;
+   }
+  }
+ }
+ /* Sorting*/
+ for(i=0;i<size-1;i++)
+ {
+  for(j=i+1;j<size;j++)
+  {
+    if(arr[i]>arr[j])
+    {
+    t=arr[i];
+    arr[i]=arr[j];
+    arr[j]=t;
+    }
+  }
+ }
+
+ /* Union of 2 linked lists*/
+ for(i=0;i<size;i++)
+ {
+  ptr3=new Linked_List();
+  if(head3==NULL)
+  {
+  ptr3->data=arr[i];
+  ptr3->next=NULL;
+  head3=temp=ptr3;
+ }
+
+ else
+ {
+  ptr3->data=arr[i];
+  ptr3->next=NULL;
+  temp->next=ptr3;
+  temp=ptr3;
+ }
+}
+
+}
+
+void main()
+{
+clrscr();
+int i,n1,n2;
+cout<<"ENTER THE NO OF NODES OF THE 1st LIST: ";
+cin>>n1;
+cout<<"ENTER THE NO OF NODES OF THE 2nd LIST: ";
+cin>>n2;
+Linked_List l;
+cout<<"ENETR THE ELEMENTS OF 1st LIST ";
+l.create(&head1,n1);
+cout<<"ENTER THE ELEMENTS OF 2nd LIST ";
+l.create(&head2,n2);
+cout<<"\n PRINT LIST 1: ";
+l.print(head1);
+cout<<"\n PRINT LIST 2: ";
+l.print(head2);
+l.Union(&head1,&head2,n1,n2);
+cout<<"\n PRINT LIST3:  ";
+l.print(head3);
+getch();
+}
+
+
+/* output
+
+
+ENTER THE NO OF NODES OF THE 1st LIST: 5
+ENTER THE NO OF NODES OF THE 2nd LIST: 4                                        
+ENETR THE ELEMENTS OF 1st LIST                                                  
+ENTER THE DATA:2                                                                
+ENTER THE DATA:-1                                                               
+ENTER THE DATA:0                                                                
+ENTER THE DATA:9                                                                
+ENTER THE DATA:5                                                                
+ENTER THE ELEMENTS OF 2nd LIST                                                  
+ENTER THE DATA:7                                                                
+ENTER THE DATA:2                                                                
+ENTER THE DATA:-1                                                               
+ENTER THE DATA:8                                                                
+                                                                                
+ PRINT LIST 1: 2  -1  0  9  5                                                   
+ PRINT LIST 2: 7  2  -1  8                                                      
+ PRINT LIST3:  -1  0  2  5  7  8  9           */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+

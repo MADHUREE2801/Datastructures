@@ -1,0 +1,142 @@
+//REMOVE DUPLICATES FROM UNSORTED LINKED LIST
+#include<iostream.h>
+#include<conio.h>
+class Node
+{
+ public:
+ int data;
+ Node *next;
+ void create();
+ void print(Node *);
+ Node * remove_duplicate(Node*);
+ }*head=NULL;
+
+ void Node::create()
+ {
+  int n;
+  cout<<"\nENTER THE NO OF ELEMENTS:";
+  cin>>n;
+  cout<<"\nENTER THE LINKED_LIST ELEMENTS:";
+  Node *ptr,*temp;
+  while(n!=0)
+  {
+   ptr=new Node();
+   if(head==NULL)
+   {
+    cin>>ptr->data;
+    ptr->next=NULL;
+    head=temp=ptr;
+   }
+   else
+   {
+    cin>>ptr->data;
+    temp->next=ptr;
+    ptr->next=NULL;
+    temp=ptr;
+   }
+  n--;
+ }
+
+ }
+ /*output:
+
+ENTER THE NO OF ELEMENTS:7                                                      
+                                                                                
+ENTER THE LINKED_LIST ELEMENTS:2 4 4 3 7 2 3                                    
+                                                                                
+ELEMENTS OF LIST ARE:2 4 4 3 7 2 3                                              
+ELEMENTS OF LIST AFTER REMOVING DUPLICATE ELEMENTS:2 4 3 7                      
+                                                                                
+   */
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+ void Node::print(Node *ptr)
+ {
+   while(ptr!=NULL)
+   {
+    cout<<ptr->data<<" ";
+    ptr=ptr->next;
+    }
+  }
+
+  Node* Node::remove_duplicate(Node *head)
+  {
+   Node *ptr1=head;
+   Node *ptr2,*temp;
+   while(ptr1->next!=NULL)
+   {
+    ptr2=ptr1;
+    while(ptr2->next!=NULL)
+    {
+      if(ptr1->data==ptr2->next->data)
+      {
+       temp=ptr2->next;
+       ptr2->next=ptr2->next->next;
+       delete temp;
+       }
+       else
+	ptr2=ptr2->next;
+     }
+     ptr1=ptr1->next;
+    }
+   return head;
+   }
+
+   void main()
+   {
+    clrscr();
+    Node n;
+    n.create();
+    cout<<"\nELEMENTS OF LIST ARE:";
+    n.print(head);
+    Node *ptr=n.remove_duplicate(head);
+    cout<<"\nELEMENTS OF LIST AFTER REMOVING DUPLICATE ELEMENTS:";
+    n.print(ptr);
+    getch();
+    }
+
+    /*output
+
+ENTER THE NO OF ELEMENTS:5                                                      
+                                                                                
+ENTER THE LINKED_LIST ELEMENTS:2 2 2 2 2                                        
+                                                                                
+ELEMENTS OF LIST ARE:2 2 2 2 2                                                  
+ELEMENTS OF LIST AFTER REMOVING DUPLICATE ELEMENTS:2                            
+ */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+

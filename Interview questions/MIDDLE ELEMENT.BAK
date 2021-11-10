@@ -1,0 +1,132 @@
+//PRINT THE MIDDLE ELEMENT
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 void create();
+	 void print();
+	 void MIDDLE_ELEMENT();
+}*head=NULL;
+
+void Node::create()
+{
+ int n,i,data;
+ cout<<"\nENTER THE NO OF NODES: ";
+ cin>>n;
+ Node *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+  if(head==NULL)
+   head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void Node::print()
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void Node::MIDDLE_ELEMENT()
+{
+ Node *ptr=head;
+ int cnt=0;
+ while(ptr!=NULL)
+ {
+  cnt++;
+  ptr=ptr->next;
+ }
+ ptr=head;
+ int k=1;
+ while(k<cnt/2+1)
+ {
+  ptr=ptr->next;
+  k++;
+ }
+ cout<<"\nMIDDLE ELEMENT: "<<ptr->data;
+}
+
+void main()
+{
+ clrscr();
+ Node l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ l.MIDDLE_ELEMENT();
+ getch();
+}
+
+
+/*output
+
+ENTER THE NO OF NODES: 5                                                        
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+MIDDLE ELEMENT: 3   */
+
+/*
+
+ENTER THE NO OF NODES: 6                                                        
+                                                                                
+ENTER THE DATA: 1 2 3 4 5 6                                                     
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5  6                                                                
+MIDDLE ELEMENT: 4                                                               
+		      */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

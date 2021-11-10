@@ -1,0 +1,164 @@
+#include<iostream.h>
+#include<conio.h>
+int n;
+void insert(int arr[100],int x,int index)
+{
+ int i,flag=0;
+ if(index>=0 && index<=n-1)
+ {
+  flag=1;
+  for(i=n-1;i>=index;i--)
+    arr[i+1]=arr[i];
+  arr[index]=x;
+  n++;
+ }
+ else if(index==n)
+ {
+  flag=1;
+  arr[index]=x;
+  n++;
+ }
+ else
+ {
+  flag=0;
+  cout<<"\n CANNOT BE INSERTED";
+ }
+ if(flag==1)
+ {
+ cout<<"\n PRINT THE ELEMENTS AFTER INSERTION \n";
+ for(i=0;i<n;i++)
+  cout<<arr[i]<<" ";
+ }
+}
+
+void search(int arr[100],int x)
+{
+ int i;
+ int flag=0;
+ for(i=0;i<n;i++)
+ {
+  if(arr[i]==x)
+  {
+   flag=1;
+   break;
+  }
+ }
+ if(flag==1)
+  cout<<"\n ELEMENTS IS FOUND";
+ else
+  cout<<"\n ELEMENT IS NOT FOUND";
+}
+
+void Delete(int arr[100],int x)
+{
+ int i,t,j,flag=0;
+
+ for(i=0;i<n;i++)
+ {
+  if(arr[i]==x && (i>=0 && i<=n-2))
+  { flag=1;
+    t=i;
+    for(j=t;j<=n-2;j++)
+     arr[j]=arr[j+1];
+   n--;
+  }
+
+  else if(arr[i]==x && i==n-1)
+  {
+   flag=1;
+   n--;
+   }
+ }
+
+ if(flag==1)
+ {
+  cout<<"\n PRINT THE ELEMENTS AFTER DELETION \n";
+  for(i=0;i<n;i++)
+   cout<<arr[i]<<" ";
+ }
+ else
+  cout<<"\n ELEMENT TO BE DELETED IS NOT FOUND";
+}
+
+
+
+void main()
+{
+ clrscr();
+ int arr[100],i,x,index;
+ cout<<"\n ENTER THE NO OF ELEMENTS:";
+ cin>>n;
+ cout<<"\n ENTER THE ARRAY ELEMENTS:";
+  for(i=0;i<n;i++)
+   cin>>arr[i];
+  cout<<"\n ENTER THE ELEMENT TO BE INSERTED:";
+  cin>>x;
+  cout<<"\n ENTER THE INDEX POSITION WHERE THE ELEMENT HAS TO BE INSERTED:";
+  cin>>index;
+  insert(arr,x,index);
+  cout<<"\n ENTER THE ELEMENT TO BE SEARCHED:";
+  cin>>x;
+  search(arr,x);
+  cout<<"\n ENETR THE ELEMENT TO BE DELETED:";
+  cin>>x;
+  Delete(arr,x);
+ getch();
+ }
+
+/* output
+
+
+ ENTER THE NO OF ELEMENTS:5                                                     
+                                                                                
+ ENTER THE ARRAY ELEMENTS:1                                                     
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ ENTER THE ELEMENT TO BE INSERTED:6                                             
+                                                                                
+ ENTER THE INDEX POSITION WHERE THE ELEMENT HAS TO BE INSERTED:6                
+                                                                                
+ CANNOT BE INSERTED                                                             
+ ENTER THE ELEMENT TO BE SEARCHED:2                                             
+                                                                                
+ ELEMENTS IS FOUND                                                              
+ ENETR THE ELEMENT TO BE DELETED:4                                              
+                                                                                
+ PRINT THE ELEMENTS AFTER DELETION                                              
+1 2 3 5
+*/
+
+/*
+
+
+ ENTER THE NO OF ELEMENTS:5                                                     
+                                                                                
+ ENTER THE ARRAY ELEMENTS:1                                                     
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ ENTER THE ELEMENT TO BE INSERTED:6                                             
+                                                                                
+ ENTER THE INDEX POSITION WHERE THE ELEMENT HAS TO BE INSERTED:5                
+                                                                                
+ PRINT THE ELEMENTS AFTER INSERTION                                             
+1 2 3 4 5 6                                                                     
+ ENTER THE ELEMENT TO BE SEARCHED:4                                             
+                                                                                
+ ELEMENTS IS FOUND                                                              
+ ENETR THE ELEMENT TO BE DELETED:3                                              
+                                                                                
+ PRINT THE ELEMENTS AFTER DELETION
+1 2 4 5 6
+
+				      */
+
+
+
+
+
+

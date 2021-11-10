@@ -1,0 +1,174 @@
+//DELETE A NODE
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void Delete_Node(int x);
+ }*head=NULL;
+
+ void linked_list::create()
+ {
+  int n,data,i;
+  linked_list *ptr,*temp;
+  cout<<"ENTER THE NO OF NODES: ";
+  cin>>n;
+  cout<<"\nENTER THE DATA: ";
+  for(i=1;i<=n;i++)
+  {
+   cin>>data;
+   ptr=new linked_list();
+   ptr->data=data;
+   ptr->next=NULL;
+   if(head==NULL)
+    head=temp=ptr;
+   else
+   {
+    temp->next=ptr;
+    temp=ptr;
+   }
+  }
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::Delete_Node(int x)
+{
+ linked_list *ptr=head,*temp;
+ int n=0,k=1;
+ while(ptr!=NULL)
+ {
+  ptr=ptr->next;
+  n++;
+ }
+ ptr=head;
+ if(x==1)
+ {
+  head=head->next;
+  delete ptr;
+ }
+ else
+ {
+  while(k<x-1)
+  {
+   k++;
+   ptr=ptr->next;
+  }
+   temp=ptr->next;
+   ptr->next=temp->next;
+   delete temp;
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ int x;
+ cout<<"\nENTER THE POSITION OF THE NODE TO BE DELETED: ";
+ cin>>x;
+ l.Delete_Node(x);
+ cout<<"\nPRINT THE LIST AFTER DELETING A NODE: ";
+ l.print();
+ getch();
+}
+
+/*
+output
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE TO BE DELETED: 1                                 
+                                                                                
+PRINT THE LIST AFTER DELETING A NODE:                                           
+2  3  4  5     */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE TO BE DELETED: 4                                 
+                                                                                
+PRINT THE LIST AFTER DELETING A NODE:                                           
+1  2  3  5     */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE TO BE DELETED: 5                                 
+                                                                                
+PRINT THE LIST AFTER DELETING A NODE:                                           
+1  2  3  4    */
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

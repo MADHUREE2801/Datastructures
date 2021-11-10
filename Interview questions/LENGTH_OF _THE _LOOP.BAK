@@ -1,0 +1,155 @@
+// length of the loop
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	// void print();
+	 void length_of_loop();
+}*head=NULL;
+
+void linked_list:: create()
+{
+ int n;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ linked_list *ptr,*temp;
+ int i,data;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+ //create a loop
+ int pos;
+ linked_list *k=head;
+ ptr=head;
+ while(ptr->next!= NULL)
+  ptr=ptr->next;
+ cout<<"\nENTER THE POSITION OF THE NODE TO WHICH THE LAST NODE SHOULD BE CONNECTED: ";
+ cin>>pos;
+ if(pos>0 && pos<=n)
+ {
+ for(i=1;i<pos;i++)
+   k=k->next;
+
+ ptr->next=k;  //connect last node to the node located at pos
+ }
+}
+
+
+/*void linked_list:: print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+} */
+
+void linked_list::length_of_loop()
+{
+ linked_list *slow=head,*fast=head,*ptr1,*ptr2;
+ int cnt=0,flag=0;
+ while(slow!=NULL && fast!=NULL &&fast->next!=NULL)
+ {
+  slow=slow->next;
+  fast=fast->next->next;
+  if(slow==fast)
+  {
+   flag=1;
+   break;
+  }
+ }
+ if(flag==1)
+ {
+  cout<<"\nLOOP IS PRESENT";
+  ptr1=head;
+  while(1)
+  {
+   ptr2=slow;
+   while(ptr2->next!=slow && ptr2->next!=ptr1)
+     ptr2=ptr2->next;
+   if(ptr2->next==ptr1)
+    break;
+   ptr1=ptr1->next;
+  }
+  while(ptr1!=ptr2)
+  {
+   cnt++;
+   ptr1=ptr1->next;
+  }
+  cnt++;
+  cout<<"\nLENGHT OF THE LOOP IS: "<<cnt;
+ }
+
+ else
+ {
+  cout<<"\nLOOP IS NOT PRESENT ";
+  cout<<"\n LENGTH OF THE LOOP IS: 0";
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ l.length_of_loop();
+ getch();
+
+}
+
+
+
+/* output
+
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ENTER THE POSITION OF THE NODE TO WHICH THE LAST NODE SHOULD BE CONNECTED: 2    
+                                                                                
+LOOP IS PRESENT                                                                 
+LENGHT OF THE LOOP IS: 4    */
+
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+

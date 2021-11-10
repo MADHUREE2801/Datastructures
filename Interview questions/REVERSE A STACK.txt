@@ -1,0 +1,80 @@
+//REVERSE A STACK
+
+#include<bits/stdc++.h>
+#include<stdio.h>
+#include<string.h>
+#include<iostream>
+using namespace std;
+
+void reverse(stack<char> &s)
+{
+	char str[100];
+	
+	int i=0,j;
+    while(!s.empty())
+    {
+	
+	
+      str[i]=s.top();
+      s.pop();
+      i++;
+   }
+
+   str[i]='\0';
+
+    i=0;
+	j=strlen(str)-1;
+	char ch;
+	
+	for(i=0;i<strlen(str)/2;i++,j--)
+	{
+		
+		ch=str[i];
+		str[i]=str[j];
+		str[j]=ch;
+	}
+    
+	for(i=0;i<strlen(str);i++)
+	  s.push(str[i]);
+	
+}
+
+
+int main()
+{
+	char str[100];
+	cout<<"ENTER THE STRING: ";
+	gets(str);
+	
+    int i;
+	stack<char>s;
+	for(i=0;i<strlen(str);i++)
+	  s.push(str[i]);
+	
+	reverse(s);
+	
+    cout<<"\nPRINT THE STACK AFTER REVERSING IT: ";
+	while(!s.empty())
+	{
+	  cout<<s.top()<<" ";
+	  s.pop();
+   }
+   
+}
+
+
+/*output
+
+ENTER THE STRING: geeks for geeks
+
+PRINT THE STACK AFTER REVERSING IT: s k e e g   r o f   s k e e g*/
+
+
+/*ENTER THE STRING: APPLE
+
+PRINT THE STACK AFTER REVERSING IT: E L P P A*/
+
+
+/*ENTER THE STRING: MALAYALAM
+
+PRINT THE STACK AFTER REVERSING IT: M A L A Y A L A M*/

@@ -1,0 +1,93 @@
+//STACK USING ARRAY
+#include<iostream.h>
+#include<conio.h>
+
+class stack
+{
+public: int arr[100];
+	int top;
+	int capacity;
+	void push(int x);
+	void pop();
+
+};
+
+void stack::push(int x)
+{
+ if(top==capacity-1)
+{
+  cout<<"STACK FULL"<<"\n";
+  return ;
+}
+ else
+  arr[++top]=x;
+ }
+
+void stack::pop()
+{
+ if(top==-1)
+  cout<<"\n STACK EMPTY -1";
+ else
+ cout<<"POPPED VALUE: "<<arr[top--]<<"  ";
+}
+
+void main()
+{
+ clrscr();
+ stack s;
+ s.top=-1;
+ int x;
+ cout<<"ENTER THE CAPACITY OF THE STACK: ";
+ cin>>s.capacity;
+ cout<<"MAIN MENU: ";
+ cout<<"\n1)PUSH 2)POP ";
+ int choice;
+ char ch;
+ do
+ {
+  cout<<"ENTER THE CHOICE: ";
+  cin>>choice;
+
+  switch(choice)
+  {
+   case 1:cout<<"ENTER THE ELEMENT: ";
+	  cin>>x;
+	  s.push(x);
+	  break;
+
+   case 2:s.pop();
+	  break;
+  }
+  cout<<"DO YOU WANT TO CONTINUE-Y OR N: ";
+  cin>>ch;
+ }while(ch=='y'||ch=='Y');
+
+ getch();
+}
+
+/*output
+ENTER THE CAPACITY OF THE STACK: 3
+MAIN MENU:                                                                      
+1)PUSH 2)POP ENTER THE CHOICE: 1                                                
+ENTER THE ELEMENT: 10                                                           
+DO YOU WANT TO CONTINUE-Y OR N: y                                               
+ENTER THE CHOICE: 1                                                             
+ENTER THE ELEMENT: 20                                                           
+DO YOU WANT TO CONTINUE-Y OR N: y                                               
+ENTER THE CHOICE: 1                                                             
+ENTER THE ELEMENT: 30                                                           
+DO YOU WANT TO CONTINUE-Y OR N: y                                               
+ENTER THE CHOICE: 1                                                             
+ENTER THE ELEMENT: 40                                                           
+STACK FULL                                                                      
+DO YOU WANT TO CONTINUE-Y OR N: y                                               
+ENTER THE CHOICE: 2                                                             
+POPPED VALUE: 30  DO YOU WANT TO CONTINUE-Y OR N: y                             
+ENTER THE CHOICE: 2                                                             
+POPPED VALUE: 20  DO YOU WANT TO CONTINUE-Y OR N: y                             
+ENTER THE CHOICE: 2                                                             
+POPPED VALUE: 10  DO YOU WANT TO CONTINUE-Y OR N: y
+ENTER THE CHOICE: 2
+
+ STACK EMPTY -1 DO YOU WANT TO CONTINUE-Y OR N: n  */
+

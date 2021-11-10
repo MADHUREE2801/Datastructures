@@ -1,0 +1,108 @@
+//SWAP NODES IN PAIRS
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void swap_nodes_in_pairs();
+ }*head=NULL;
+
+ void linked_list::create()
+ {
+  linked_list *ptr,*temp;
+  int n,i,data;
+  cout<<"ENTER THE NO OF ELEMENTS: ";
+  cin>>n;
+  cout<<"\nENTER THE DATA: ";
+  for(i=1;i<=n;i++)
+  {
+   cin>>data;
+   ptr=new linked_list();
+   if(head==NULL)
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    head=temp=ptr;
+   }
+   else
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    temp->next=ptr;
+    temp=ptr;
+   }
+  }
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::swap_nodes_in_pairs()
+{
+ linked_list *ptr=head,*k;
+ int temp;
+ while(ptr!=NULL)
+ {
+  k=ptr->next;
+  if(k==NULL)
+   break;
+  temp=ptr->data;
+  ptr->data=k->data;
+  k->data=temp;
+  ptr=ptr->next->next;
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ l.swap_nodes_in_pairs();
+ cout<<"\nPRINT THE LIST AFTER SWAPPING: ";
+ l.print();
+ getch();
+}
+
+/*output
+
+ENTER THE NO OF ELEMENTS: 6
+                                                                                
+ENTER THE DATA: 1 2 3 4 5 6                                                     
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5  6                                                                
+PRINT THE LIST AFTER SWAPPING:                                                  
+2  1  4  3  6  5         */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

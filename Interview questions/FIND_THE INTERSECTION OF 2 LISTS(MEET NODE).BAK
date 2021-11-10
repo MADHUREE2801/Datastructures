@@ -1,0 +1,170 @@
+//find the intrsection of the 2 lists --the node whwere the 2 lists meet
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 int intersection();
+}*head1=NULL,*head2=NULL;
+
+void linked_list::create()
+{
+ int n1,n2;
+ cout<<"ENTER THE NUMBER OF ELEMENTS OF LIST 1: ";
+ cin>>n1;
+ cout<<"\nENTER THE NUMBER OF ELEMENTS OF LIST 2: ";
+ cin>>n2;
+ int i,data;
+ linked_list *ptr1=head1,*ptr2=head2,*temp;
+ cout<<"\nENTER THE DATA OF LIST 1: ";
+ for(i=1;i<=n1;i++)
+ {
+  ptr1=new linked_list();
+  cin>>data;
+  if(head1==NULL)
+  {
+   ptr1->data=data;
+   ptr1->next=NULL;
+   head1=temp=ptr1;
+  }
+  else
+  {
+   ptr1->data=data;
+   ptr1->next=NULL;
+   temp->next=ptr1;
+   temp=ptr1;
+  }
+ }
+
+ cout<<"\nENTER THE DATA OF LIST 2: ";
+ for(i=1;i<=n2;i++)
+ {
+  ptr2=new linked_list();
+  cin>>data;
+  if(head2==NULL)
+  {
+   ptr2->data=data;
+   ptr2->next=NULL;
+   head2=temp=ptr2;
+  }
+  else
+  {
+   ptr2->data=data;
+   ptr2->next=NULL;
+   temp->next=ptr2;
+   temp=ptr2;
+  }
+ }
+ linked_list *common=NULL,*ptr3;
+ int n3;
+ cout<<"\nENTER THE NO OF ELEMENTS OF COMMON LIST: ";
+ cin>>n3;
+ cout<<"\nENTER THE DATA OF COMMON LIST: ";
+ for(i=1;i<=n3;i++)
+ {
+  ptr3=new linked_list();
+  cin>>data;
+  if(common==NULL)
+  {
+   ptr3->data=data;
+   ptr3->next=NULL;
+   common=temp=ptr3;
+  }
+  else
+  {
+   ptr3->data=data;
+   ptr3->next=NULL;
+   temp->next=ptr3;
+   temp=ptr3;
+  }
+ }
+ ptr1=head1;
+ ptr2=head2;
+ while(ptr1->next!=NULL)
+  ptr1=ptr1->next;
+ while(ptr2->next!=NULL)
+  ptr2=ptr2->next;
+ ptr1->next=common;
+ ptr2->next=common;
+}
+
+void linked_list::print()
+{
+ linked_list *ptr1=head1,*ptr2=head2;
+ cout<<"\nPRINT LIST1: ";
+ while(ptr1!=NULL)
+ {
+  cout<<ptr1->data<<"  ";
+  ptr1=ptr1->next;
+ }
+ cout<<"\nPRINT LIST2: ";
+ while(ptr2!=NULL)
+ {
+  cout<<ptr2->data<<"  ";
+  ptr2=ptr2->next;
+  }
+ }
+ int linked_list::intersection()
+ {
+ linked_list  *ptr1=head1,*ptr2=head2;
+ while(ptr2!=NULL)
+ {
+  ptr1=head1;
+  while(ptr1!=NULL)
+  {
+   if(ptr1==ptr2)
+    return ptr2->data;
+   ptr1=ptr1->next;
+  }
+  ptr2=ptr2->next;
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ l.print();
+ int meet=l.intersection();
+ cout<<"\nMEET=: "<<meet;
+ getch();
+}
+
+
+/*
+output
+
+ENTER THE NUMBER OF ELEMENTS OF LIST 1: 3
+                                                                                
+ENTER THE NUMBER OF ELEMENTS OF LIST 2: 1                                       
+                                                                                
+ENTER THE DATA OF LIST 1:                                                       
+3                                                                               
+2                                                                               
+8                                                                               
+                                                                                
+ENTER THE DATA OF LIST 2:                                                       
+10                                                                              
+                                                                                
+ENTER THE NO OF ELEMENTS OF COMMON LIST: 3                                      
+                                                                                
+ENTER THE DATA OF COMMON LIST:                                                  
+15                                                                              
+30                                                                              
+35                                                                              
+                                                                                
+PRINT LIST1: 3  2  8  15  30  35                                                
+PRINT LIST2: 10  15  30  35
+MEET=: 15
+				     */
+                                                                                
+                                                                                
+
+
+

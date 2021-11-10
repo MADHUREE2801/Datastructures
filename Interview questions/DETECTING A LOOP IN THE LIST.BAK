@@ -1,0 +1,193 @@
+//detect the loop in the list
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void detect_loop();
+ }*head=NULL;
+
+void linked_list:: create()
+{
+ int n,i,data;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ linked_list *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+ //creating a loop
+ linked_list *k=head;
+ ptr=head;
+ while(ptr->next!=NULL)
+  ptr=ptr->next;
+ int pos;
+ cout<<"\nENTER THE POSITION OF THE NODE TO WHICH LAST NODE SHOULD BE CONNECTED: ";
+ cin>>pos;
+ if(pos>0 && pos<=n)
+ {
+  for(i=1;i<pos;i++)
+   k=k->next;
+  ptr->next=k;
+ }
+ else
+  cout<<"\nLOOP CANNOT BE CREATED";
+}
+
+
+void linked_list:: print()
+{
+
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<" ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::detect_loop()
+{
+ linked_list *slow=head,*fast=head;
+ int flag=0;
+ while(slow!=NULL && fast!=NULL &&fast->next!=NULL)
+ {
+  slow=slow->next;
+  fast=fast->next->next;
+  if(slow==fast)
+  {
+   flag=1;
+   break;
+  }
+ }
+ if(flag==1)
+ {
+  cout<<"\nLOOP IS PRESENT";
+ }
+ else
+ {
+  cout<<"\nLOOP IS NOT PRESENT";
+  cout<<"\nPRINT THE LIST";
+  print();
+  }
+ }
+
+ void main()
+ {
+  clrscr();
+  linked_list l;
+  l.create();
+  l.detect_loop();
+  getch();
+  }
+
+
+/*output
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ENTER THE POSITION OF THE NODE TO WHICH LAST NODE SHOULD BE CONNECTED: 1        
+                                                                                
+LOOP IS PRESENT      */
+
+/*ENTER THE NO OF NODES: 5
+
+ENTER THE DATA:
+1
+2
+3
+4
+5
+
+ENTER THE POSITION OF THE NODE TO WHICH LAST NODE SHOULD BE CONNECTED: 5
+
+LOOP IS PRESENT */
+
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ENTER THE POSITION OF THE NODE TO WHICH LAST NODE SHOULD BE CONNECTED: 7        
+                                                                                
+LOOP CANNOT BE CREATED                                                          
+LOOP IS NOT PRESENT                                                             
+PRINT THE LIST                                                                  
+1 2 3 4 5            */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+

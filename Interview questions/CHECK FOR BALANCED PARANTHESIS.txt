@@ -1,0 +1,85 @@
+// CHECK FOR BALANCED PARANTHESIS
+
+#include<bits/stdc++.h>
+#include<string>
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+
+bool check(char s[100]) 
+
+{
+	
+	stack<char>str;
+	
+	char x;
+	int i;
+	for(i=0;i<strlen(s);i++)
+	{
+		if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+		{
+			str.push(s[i]);
+			continue;
+		}
+		
+		if(str.empty())
+		 return false;
+	    
+	    switch(s[i])
+	    {
+	    	case ')':
+	    		
+	    		   x=str.top();
+	    		   str.pop();
+	    		   if(x=='{' ||x=='[')
+	    		     return false;
+	    		    break;
+	        case '}':
+	        	  x=str.top();
+	        	  str.pop();
+	        	  if(x=='(' || x=='[')
+	        	    return false;
+	        	  break;
+	        case ']':
+	        	  x=str.top();
+	        	  str.pop();
+	        	  if(x=='{ ' || x=='(' )
+	        	    return false;
+	        	  break;
+	    }
+	    
+    }
+	     return str.empty();
+}
+	
+int main()
+{
+	char s[100];
+	cout<<"ENTER THE STRING: ";
+	gets(s);
+	bool b=check(s);
+	if(b==true)
+	  cout<<"\nBALANCED";
+	else
+	 cout<<"\nUNBALANCED";
+	 return 0;
+	 
+	 
+}
+
+/*output
+ENTER THE STRING: [{()}]
+
+BALANCED
+*/
+/*
+ENTER THE STRING: [{)]
+
+UNBALANCED
+*/
+
+/*
+ENTER THE STRING: {
+
+UNBALANCED*/

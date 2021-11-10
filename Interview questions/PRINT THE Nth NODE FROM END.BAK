@@ -1,0 +1,178 @@
+//FIND THE Nth NODE FROM END
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 void create();
+	 void print();
+	 int Nth_Node(int N);
+}*head=NULL;
+
+void Node::create()
+{
+ int n,data,i;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ Node *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+  if(head==NULL)
+   head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+}
+
+void Node::print()
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+int Node::Nth_Node(int N)
+{
+  int cnt=0;
+  Node *ptr=head;
+  while(ptr!=NULL)
+  {
+   cnt++;
+   ptr=ptr->next;
+  }
+  ptr=head;
+  int k=1;
+
+  if(N>cnt)
+   return -1;
+  else
+  {
+   while(k<(cnt-N+1))
+   {
+    ptr=ptr->next;
+    k++;
+   }
+   return ptr->data;
+ }
+}
+
+void main()
+{
+ clrscr();
+ Node l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ int N;
+ cout<<"\nENTER THE POSITION OF THE NODE: ";
+ cin>>N;
+ int res=l.Nth_Node( N);
+ if(res==-1)
+  cout<<"\n THERE IS NO ELEMENT";
+ else
+  cout<<"\nTHE ELEMENT IS: "<<res;
+ getch();
+}
+
+
+/*
+output
+
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE: 2                                               
+                                                                                
+THE ELEMENT IS: 4      */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE: 5                                               
+                                                                                
+THE ELEMENT IS: 1  */
+
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+ENTER THE POSITION OF THE NODE: 6                                               
+                                                                                
+ THERE IS NO ELEMENT                                                            
+			*/
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

@@ -1,0 +1,99 @@
+//STACK USING LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 linked_list *top;
+	 linked_list()
+	 {
+	  top=NULL;
+	 }
+	 void push(int data);
+	 void pop();
+};
+
+
+void linked_list ::push(int data)
+{
+ linked_list *ptr;
+ ptr=new linked_list();
+ ptr->data=data;
+ ptr->next=NULL;
+ if(top==NULL)
+   top=ptr;
+ else
+ {
+  ptr->next=top;
+  top=ptr;
+ }
+}
+
+void linked_list ::pop()
+{
+ if(top==NULL)
+  cout<<"STACK EMPTY\n";
+ else
+ {
+  cout<<top->data<<"  ";
+  top=top->next;
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ int choice,data;
+ char ch;
+ cout<<"MAIN MENU: 1)push 2)pop ";
+ do
+ {
+  cout<<"ENTER THE CHOICE: ";
+  cin>>choice;
+  switch(choice)
+  {
+   case 1: cout<<"ENTER THE DATA: ";
+	   cin>>data;
+	   l.push(data);
+	   break;
+   case 2: l.pop();
+	   break;
+  }
+  cout<<"DO YOU WANT TO CONTINUE: ";
+  cin>>ch;
+ }while(ch=='y' || ch=='Y');
+ getch();
+}
+
+/*
+output
+MAIN MENU: 1)push 2)pop
+ENTER THE CHOICE: 1
+ENTER THE DATA: 10
+DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 1
+ENTER THE DATA: 20
+DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 1
+ENTER THE DATA: 30
+DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 2
+30  DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 2
+20  DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 2
+10  DO YOU WANT TO CONTINUE: y
+ENTER THE CHOICE: 2
+STACK EMPTY
+DO YOU WANT TO CONTINUE: n   */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

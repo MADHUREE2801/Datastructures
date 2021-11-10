@@ -1,0 +1,183 @@
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+public: int data;
+	linked_list *next;
+	void create();
+	void print();
+	void remove_loop();
+}*head=NULL;
+
+void linked_list:: create()
+{
+ int n;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ linked_list *ptr,*temp;
+ int i,data;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+ // creating a loop
+ int pos;
+ cout<<"\nENTER THE POSITION OF THE NODE TO WHICH THE LAST NODE HAS TO BE CONNECTED: ";
+ cin>>pos;
+ if(pos>0 &&pos<=n)
+ {
+ linked_list* k=head;
+ for(i=1;i<pos;i++)
+ {
+  k=k->next;
+ }
+ ptr=head;
+ while(ptr->next!=NULL)
+ {
+  ptr=ptr->next;
+ }
+ ptr->next=k;  //connect the last node to the node located at position "pos"
+ }
+
+}
+void linked_list:: print()
+{
+ linked_list *ptr;
+ ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list:: remove_loop()
+{
+ linked_list *slow=head,*fast=head,*ptr1,*ptr2;
+ int flag=0;
+ while(slow!=NULL && fast!=NULL && fast->next!=NULL) //only then loop exists
+ {
+  slow=slow->next;
+  fast=fast->next->next;
+  if(slow==fast)
+   {
+    flag=1;
+    break;
+   }
+ }
+  ptr1=head;
+   if(flag==1)
+   {
+    cout<<"\nLOOP IS PRESENT";
+    while(1)
+    {
+     ptr2=slow;
+
+     while(ptr2->next!=slow && ptr2->next!=ptr1)
+      ptr2=ptr2->next;
+
+     if(ptr2->next==ptr1)
+      break;
+
+     ptr1=ptr1->next;
+    }
+    ptr2->next=NULL; //remove the loop
+    cout<<"\nPRINT THE LIST AFTER REMOVING THE LOOP: ";
+    print();
+
+   }
+
+   else
+   {
+    cout<<"\nTHERE IS NO LOOP";
+    cout<<"\nPRINT THE LIST: ";
+    print();
+   }
+  }
+
+void main()
+ {
+  clrscr();
+  linked_list l;
+  l.create();
+  l.remove_loop();
+
+  getch();
+}
+
+
+/*output
+
+ENTER THE NO OF NODES: 5
+
+ENTER THE DATA:
+1
+2
+3
+4
+5
+
+ENTER THE POSITION OF THE NODE TO WHICH THE LAST NODE HAS TO BE CONNECTED: 0
+
+THERE IS NO LOOP
+PRINT THE LIST:
+1  2  3  4  5      */
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+ENTER THE POSITION OF THE NODE TO WHICH THE LAST NODE HAS TO BE CONNECTED: 3    
+                                                                                
+LOOP IS PRESENT                                                                 
+PRINT THE LIST AFTER REMOVING THE LOOP:                                         
+1  2  3  4  5                                                                   
+			    */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+

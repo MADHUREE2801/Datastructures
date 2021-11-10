@@ -1,0 +1,115 @@
+//REORDER LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void reorder_list();
+}*head=NULL;
+
+void linked_list:: create()
+{
+ int n,i,data;
+ linked_list *ptr,*temp;
+ cout<<"ENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  ptr->data=data;
+  ptr->next=NULL;
+  if(head==NULL)
+  {
+   head=temp=ptr;
+  }
+  else
+  {
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void linked_list ::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+ void linked_list::reorder_list()
+ {
+  linked_list *ptr=head;
+  int i=0,arr[1000],j,cnt=0;
+  while(ptr!=NULL)
+  {
+   arr[i]=ptr->data;
+   i++;
+   cnt++;
+   ptr=ptr->next;
+  }
+  ptr=head;
+  for(i=0,j=cnt-1;i<=j;i++,j--)
+  {
+   ptr->data=arr[i];
+   if(ptr->next==NULL)
+     break;
+   ptr->next->data=arr[j];
+   ptr=ptr->next->next;
+  }
+
+}
+
+
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+
+l.reorder_list();
+ cout<<"\nPRINT THE MODIFIED LIST : ";
+ l.print();
+ getch();
+}
+
+/*output
+
+ENTER THE NO OF ELEMENTS: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+PRINT THE MODIFIED LIST :                                                       
+1  5  2  4  3                                                                   
+		    */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

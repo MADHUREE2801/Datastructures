@@ -1,0 +1,148 @@
+// reverse linked list in groups ofgiven size
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	void reverse_in_groups(int);
+ }*head=NULL;
+
+ void linked_list::create()
+ {
+  int n;
+  cout<<"\ENTER THE NO OF ELEMENTS: ";
+  cin>>n;
+  int i,data;
+  linked_list *ptr,*temp;
+  cout<<"\nENTER THE DATA: ";
+  for(i=1;i<=n;i++)
+  {
+   cin>>data;
+   ptr=new linked_list();
+   if(head==NULL)
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    head=temp=ptr;
+   }
+   else
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    temp->next=ptr;
+    temp=ptr;
+   }
+  }
+ }
+
+ void linked_list::print()
+ {
+  linked_list *ptr=head;
+  cout<<"\n";
+  while(ptr!=NULL)
+  {
+   cout<<ptr->data<<"  ";
+   ptr=ptr->next;
+  }
+ }
+
+ void linked_list::reverse_in_groups(int size)
+ { /*
+  linked_list *current=root,*nxt=NULL,*prev=NULL;
+  int cnt=1;
+  while(cnt<=size && current!=NULL)
+  {
+   nxt=current->next;
+   current->next=prev;
+   prev=current;
+   cnt++;
+  }
+  if(nxt==NULL)
+   return prev;
+
+ root->next=reverse_in_groups(nxt,size);           */
+
+ int cnt=1,t;
+ linked_list *ptr=head;
+ int arr[100],i=0,j,n,m;
+ while(ptr!=NULL)
+ {
+  cnt=1;
+  m=i;
+  while(cnt<=size)
+  {
+   arr[i]=ptr->data;
+   i++;
+   cnt++;
+   ptr=ptr->next;
+   if(ptr==NULL)
+    break;
+  }
+  n=i;
+  for(j=n-1;m<j;m++,j--)
+  {
+   t=arr[m];
+   arr[m]=arr[j];
+   arr[j]=t;
+  }
+ }
+
+ ptr=head;
+ i=0;
+ while(ptr!=NULL)
+ {
+ ptr->data=arr[i];
+ i++;
+ ptr=ptr->next;
+ }
+}
+ void main()
+ {
+  clrscr();
+  int size;
+  linked_list l;
+  l.create();
+  cout<<"\nPRINT THE LIST: ";
+  l.print();
+  cout<<"\nENTER THE SIZE REQUIRED TO REVERSE THE LIST IN GROUPS: ";
+  cin>>size;
+  l.reverse_in_groups(size);
+  cout<<"\nPRINT THE LIST AFTER REVERSING THE LIST IN GROUPS:";
+  l.print();
+  getch();
+ }
+
+
+
+/*output
+
+ENTER THE NO OF ELEMENTS: 7
+                                                                                
+ENTER THE DATA: 1 2 3 4 5 6 7                                                   
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5  6  7                                                             
+ENTER THE SIZE REQUIRED TO REVERSE THE LIST IN GROUPS: 4                        
+                                                                                
+PRINT THE LIST AFTER REVERSING THE LIST IN GROUPS:                              
+4  3  2  1  7  6  5                                                             
+					  */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

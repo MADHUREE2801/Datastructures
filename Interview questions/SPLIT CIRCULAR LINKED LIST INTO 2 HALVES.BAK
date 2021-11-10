@@ -1,0 +1,151 @@
+//SPLIT CIRCULAR LINKED LIST INTO 2 HALVES (INTO 2 CIRCULAR LISTS)
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 void create();
+	 void print(Node *head);
+	 void split();
+}*head=NULL,*head1=NULL,*head2=NULL;
+
+void Node::create()
+{
+ int data,i,n;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ Node *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+
+  if(head==NULL)
+   head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+
+ ptr->next=head;
+}
+
+void Node::print(Node *head)
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr->next!=head)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+ cout<<ptr->data;
+}
+
+void Node::split()
+{
+ int cnt=1,k,p=1;
+ Node *ptr=head,*temp,*end=head;
+ while(end->next!=head)
+ {
+  end=end->next;
+  cnt++;
+ }
+ if(cnt%2==0)
+  k=cnt/2;
+ else
+  k=cnt/2+1;
+
+  head1=head;
+  while(p<k)
+  {
+   ptr=ptr->next;
+   p++;
+  }
+   temp=ptr->next;
+   ptr->next=head1;
+
+   head2=temp;
+   end->next=head2;
+ }
+
+ void main()
+ {
+  clrscr();
+  Node l;
+  l.create();
+  cout<<"\nPRINT THE MAIN CIRCULAR LIST: ";
+  l.print(head);
+  l.split();
+  cout<<"\nPRINT THE CIRCULAR LIST 1: ";
+  l.print(head1);
+  cout<<"\nPRINT THE CIRCULAR LIST 2: ";
+  l.print(head2);
+  getch();
+ }
+
+
+/*
+output
+ENTER THE NO OF NODES: 6
+                                                                                
+ENTER THE DATA: 1 2 3 4 5 6                                                     
+                                                                                
+PRINT THE MAIN CIRCULAR LIST:                                                   
+1  2  3  4  5  6                                                                
+PRINT THE CIRCULAR LIST 1:                                                      
+1  2  3                                                                         
+PRINT THE CIRCULAR LIST 2:                                                      
+4  5  6              */
+
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE MAIN CIRCULAR LIST:                                                   
+1  2  3  4  5                                                                   
+PRINT THE CIRCULAR LIST 1:                                                      
+1  2  3                                                                         
+PRINT THE CIRCULAR LIST 2:                                                      
+4  5               */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

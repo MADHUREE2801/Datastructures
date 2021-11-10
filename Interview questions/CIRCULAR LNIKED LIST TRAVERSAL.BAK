@@ -1,0 +1,93 @@
+//CIRCULAR LINKED LIST TRAVERSAL
+
+//50 40 30 20 10
+
+//STRUCTURE OF THE LIST :10->20->30->40->50->
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 void create();
+	 void print();
+}*head=NULL;
+
+void Node::create()
+{
+ int n,data,i;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ Node *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+  if(head==NULL)
+    head=temp=ptr;
+  else
+  {
+   ptr->next=temp;
+   temp=ptr;
+  }
+
+ }
+ head->next=ptr;
+ head=ptr;
+}
+
+void Node::print()
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr->next!=head)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+ cout<<ptr->data;
+}
+
+void main()
+{
+ clrscr();
+ Node l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ getch();
+}
+
+
+/*output
+
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 50 40 30 20 10                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50      */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

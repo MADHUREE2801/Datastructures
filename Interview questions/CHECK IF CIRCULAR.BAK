@@ -1,0 +1,137 @@
+//detect circular list
+
+#include<iostream.h>
+#include<conio.h>
+
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void check_circular();
+}*head=NULL;
+
+void linked_list:: create()
+{
+int n;
+cout<<"\nENTER THE NO OF NODES: ";
+cin>>n;
+linked_list *ptr,*temp;
+int i,data;
+cout<<"\nENTER THE DATA: ";
+for(i=1;i<=n;i++)
+{
+ cin>>data;
+ ptr=new linked_list();
+ if(head==NULL)
+ {
+  ptr->data=data;
+  ptr->next=NULL;
+  head=temp=ptr;
+ }
+ else
+ {
+  ptr->data=data;
+  ptr->next=NULL;
+  temp->next=ptr;
+  temp=ptr;
+ }
+}
+
+//circular list
+ptr=head;
+
+  while(ptr->next!=NULL)
+   ptr=ptr->next;
+ ptr->next=head; //connect last node to the head
+
+
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<" ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::check_circular()
+{
+ linked_list *slow=head,*fast=head;
+ int flag;
+
+  while(slow!=NULL && fast!=NULL &&fast->next!=NULL)
+  {
+   slow=slow->next;
+   fast=fast->next->next;
+   if(slow==fast)
+   {
+    flag=1;
+    break;
+   }
+  }
+ if(head==NULL)
+  cout<<"\nIT IS A CIRCULAR LINKED LIST";
+ else if(flag==1)
+   cout<<"\nIT IS A CIRCULAR LINKED LIST ";
+  else
+  {
+   cout<<"\nIT IS NOT A CIRCULAR LINKED LIST";
+   cout<<"\nPRINT THE LIST";
+   print();
+   }
+}
+
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ cout<<"\nCREATE A LIST";
+ l.create();
+ l.check_circular();
+ getch();
+}
+
+/*output
+
+
+CREATE A LIST                                                                   
+ENTER THE NO OF NODES: 5                                                        
+                                                                                
+ENTER THE DATA:                                                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+                                                                                
+IT IS A CIRCULAR LINKED LIST  */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

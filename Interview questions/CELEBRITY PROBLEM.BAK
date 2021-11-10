@@ -1,0 +1,105 @@
+#include<iostream.h>
+#include<conio.h>
+
+void celebrity(int M[100][100],int n)
+{
+ int i,j,outdegree[100]={0},indegree[100]={0};
+ for(i=0;i<n;i++)
+ {
+  for(j=0;j<n;j++)
+  {
+   outdegree[i]+=M[i][j];
+   indegree[j]+=M[i][j];
+  }
+ }
+ int flag=0;
+ for(i=0;i<n;i++)
+ {
+  if(indegree[i]==n-1 && outdegree[i]==0)
+  {
+    cout<<"\n"<<i<<" is a CELEBRITY";
+    flag=1;
+    break;
+  }
+ }
+
+ if(flag==0)
+  cout<<"\nTHERE IS NO CELEBRITY";
+
+
+}
+
+void main()
+{
+ clrscr();
+ int M[100][100],n,i,j;
+ cout<<"ENTER THE NO OF ROWS AND COLUMNS: ";
+ cin>>n;
+ cout<<"\nENTER THE ELEMENTS: ";
+ for(i=0;i<n;i++)
+ {
+  for(j=0;j<n;j++)
+   cin>>M[i][j];
+  }
+  celebrity(M,n);
+ getch();
+}
+
+
+/*
+output
+
+ENTER THE NO OF ROWS AND COLUMNS: 4
+                                                                                
+ENTER THE ELEMENTS:                                                             
+0 0 1 0                                                                         
+0 0 1 0                                                                         
+0 0 0 0                                                                         
+0 0 1 0                                                                         
+                                                                                
+2 is a CELEBRITY    */
+
+/*
+ENTER THE NO OF ROWS AND COLUMNS: 4
+                                                                                
+ENTER THE ELEMENTS:                                                             
+0 0 1 0                                                                         
+0 0 1 0                                                                         
+0 1 0 0                                                                         
+0 0 1 0                                                                         
+                                                                                
+THERE IS NO CELEBRITY   */
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

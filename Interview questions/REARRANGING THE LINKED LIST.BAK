@@ -1,0 +1,140 @@
+//REARRANGE THE LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void rearrange_the_list();
+}*head;
+
+void linked_list:: create()
+{
+ int n,i,data;
+ cout<<"ENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ linked_list *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  ptr->data=data;
+  ptr->next=NULL;
+  if(head==NULL)
+    head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::rearrange_the_list()
+{
+ int arr[1000],i=0,cnt=0;
+ linked_list *ptr=head;
+ while(ptr!=NULL)
+ {
+  arr[i]=ptr->data;
+  i++;
+  cnt++;
+  ptr=ptr->next;
+ }
+ ptr=head;
+ for(i=0;i<cnt;i+=2)
+ {
+  ptr->data=arr[i];
+  ptr=ptr->next;
+ }
+ for(i=1;i<cnt;i+=2)
+ {
+  ptr->data=arr[i];
+  ptr=ptr->next;
+ }
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ l.rearrange_the_list();
+ cout<<"\nPRINT THE LIST AFTER REARRANGING THE LIST: ";
+ l.print();
+ getch();
+}
+
+/*output
+
+ENTER THE NO OF ELEMENTS: 5
+                                                                                
+ENTER THE DATA: 1 2 3 4 5                                                       
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5                                                                   
+PRINT THE LIST AFTER REARRANGING THE LIST:                                      
+1  3  5  2  4                                                                   
+		    */
+
+/* output
+ENTER THE NO OF ELEMENTS: 5
+                                                                                
+ENTER THE DATA: 10 100 32 43 17                                                 
+                                                                                
+PRINT THE LIST:                                                                 
+10  100  32  43  17                                                             
+PRINT THE LIST AFTER REARRANGING THE LIST:                                      
+10  32  17  100  43                                                             
+		       */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

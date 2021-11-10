@@ -1,0 +1,142 @@
+//reverse a linked list
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 linked_list * reverse();
+} *head=NULL;
+
+void linked_list::create()
+{
+ int n;
+ cout<<"ENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ int i,data;
+ linked_list *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+linked_list * linked_list::reverse()
+{
+ linked_list *cur=head,*nxt=NULL,*prev=NULL;
+ if(head==NULL || head->next==NULL)
+ {
+   return head;
+ }
+ while(cur!=NULL)
+ {
+  nxt=cur->next;
+  cur->next=prev;
+  prev=cur;
+  cur=nxt;
+ }
+ head=prev;
+ return head;
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ head=l.reverse();
+ cout<<"\nPRINT THE LIST AFTER REVERSING THE LIST: ";
+ l.print();
+ getch();
+
+}
+
+/*
+output
+ENTER THE NO OF ELEMENTS: 6
+                                                                                
+ENTER THE DATA: 1 2 3 4 5 6                                                     
+                                                                                
+PRINT THE LIST:                                                                 
+1  2  3  4  5  6                                                                
+PRINT THE LIST AFTER REVERSING THE LIST:                                        
+6  5  4  3  2  1        */
+
+/*ENTER THE NO OF ELEMENTS: 1
+                                                                                
+ENTER THE DATA: 10                                                              
+                                                                                
+PRINT THE LIST:                                                                 
+10                                                                              
+PRINT THE LIST AFTER REVERSING THE LIST:                                        
+10           */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+

@@ -1,0 +1,159 @@
+//INSERT NODES IN SORTED LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 void create();
+	 void print();
+	 void insert(int data);
+}*head=NULL;
+
+void linked_list:: create()
+{
+ int n,data,i;
+ linked_list *ptr,*temp;
+ cout<<"ENTER THE NO OF ELEMENTS: ";
+ cin>>n;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new linked_list();
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void linked_list::print()
+{
+ linked_list *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void linked_list::insert(int data)
+{
+ linked_list *ptr=head,*k;
+ k=new linked_list();
+ k->data=data;
+ k->next=NULL;
+ if(data<=head->data)
+ {
+  k->next=head;
+  head=k;
+ }
+
+ else if(data>head->data)
+ {
+  while(ptr!=NULL)
+ {
+  if(ptr->next==NULL && data>=ptr->data)
+  {
+   ptr->next=k;
+   k->next=NULL;
+   break;
+  }
+  if(data>=ptr->data && data<=ptr->next->data)
+  {
+    k->next=ptr->next;
+    ptr->next=k;
+   break;
+  }
+  ptr=ptr->next;
+ }
+}
+
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ int data;
+ cout<<"\nENTER THE DATA TO BE INSERTED: ";
+ cin>>data;
+ l.insert(data);
+ cout<<"\nPRINT THE LIST AFTER INSERTION: ";
+ l.print();
+ getch();
+}
+
+/* output
+
+ENTER THE NO OF ELEMENTS: 6
+
+ENTER THE DATA: 1 13 20 37 45 50
+
+PRINT THE LIST:
+1  13  20  37  45  50
+ENTER THE DATA TO BE INSERTED: 1
+
+PRIN THE LIST AFTER INSERTION:
+1  1  13  20  37  45  50   */
+
+
+/*
+ENTER THE NO OF ELEMENTS: 6
+                                                                                
+ENTER THE DATA: 1 13 20 37 45 50                                                
+                                                                                
+PRINT THE LIST:                                                                 
+1  13  20  37  45  50                                                           
+ENTER THE DATA TO BE INSERTED: 60                                               
+                                                                                
+PRINT THE LIST AFTER INSERTION:                                                 
+1  13  20  37  45  50  60  */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+

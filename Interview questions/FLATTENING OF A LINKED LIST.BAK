@@ -1,0 +1,188 @@
+
+//flattening of linked list
+
+#include<iostream.h>
+#include<conio.h>
+
+class linked_list
+{
+ public: int data;
+	 linked_list *next;
+	 linked_list *bottom;
+	 void create();
+	 void print(linked_list *);
+	 linked_list * flattening_of_list();
+ }*head=NULL;
+
+ void linked_list::create()
+ {
+  linked_list *ptr,*temp,*b=NULL,*k;
+  int n,n1;
+  cout<<"ENTER THE NO OF ELEMENTS OF THE MAIN LIST: ";
+  cin>>n;
+  int i,data;
+  cout<<"\nENTER THE DATA: ";
+  for(i=1;i<=n;i++)
+  {
+   cin>>data;
+   ptr=new linked_list();
+   if(head==NULL)
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    ptr->bottom=NULL;
+    head=temp=ptr;
+   }
+   else
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    ptr->bottom=NULL;
+    temp->next=ptr;
+    temp=ptr;
+   }
+
+ }
+
+ int count=1;
+ ptr=head;
+ while(count<=n)
+{
+b=ptr->bottom;
+
+ cout<<"\nENTER THE NO OF ELEMENTS OF THE  BOTTOM LIST: ";
+ cin>>n1;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n1;i++)
+ {
+  cin>>data;
+  k=new linked_list();
+  if(b==NULL)
+  {
+   k->data=data;
+   k->bottom=NULL;
+   k->next=NULL;
+   b=temp=k;
+  }
+  else
+  {
+   k->data=data;
+   k->bottom=NULL;
+   k->next=NULL;
+   temp->bottom=k;
+   temp=k;
+  }
+ }
+ ptr->bottom=b;
+ ptr=ptr->next;
+ count++;
+}
+
+}
+void linked_list:: print(linked_list *root)
+{
+ linked_list *ptr=root;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+linked_list * linked_list::flattening_of_list()
+{
+ linked_list *root=NULL,*ptr=head,*b;
+ linked_list *r=root,*temp;
+ int arr[100],i=0,n;
+ while(ptr!=NULL)
+ {
+  b=ptr;
+  while(b!=NULL)
+  {
+   arr[i]=b->data;
+   b=b->bottom;
+   i++;
+  }
+  ptr=ptr->next;
+ }
+ n=i;
+ int j,t;
+
+ for(i=0;i<n-1;i++)
+ {
+ for(j=i+1;j<n;j++)
+ {
+  if(arr[i]>arr[j])
+  {
+   t=arr[i];
+   arr[i]=arr[j];
+   arr[j]=t;
+  }
+ }
+}
+
+
+ for(i=0;i<n;i++)
+ {
+  r=new linked_list();
+  if(root==NULL)
+  {
+   r->data=arr[i];
+   r->next=NULL;
+   r->bottom=NULL;
+   root=temp=r;
+  }
+  else
+  {
+   r->data=arr[i];
+   r->next=NULL;
+   r->bottom=NULL;
+   temp->next=r;
+   temp=r;
+  }
+ }
+
+ return root;
+}
+
+void main()
+{
+ clrscr();
+ linked_list l;
+ l.create();
+ linked_list *root;
+ root=l.flattening_of_list();
+ cout<<"\nPRINT THE LIST: ";
+ l.print(root);
+ getch();
+}
+
+
+/*output
+
+ENTER THE NO OF ELEMENTS OF THE MAIN LIST: 3
+                                                                                
+ENTER THE DATA: 22 9 120                                                        
+                                                                                
+ENTER THE NO OF ELEMENTS OF THE  BOTTOM LIST: 1                                 
+                                                                                
+ENTER THE DATA: 32                                                              
+                                                                                
+ENTER THE NO OF ELEMENTS OF THE  BOTTOM LIST: 2                                 
+                                                                                
+ENTER THE DATA: 112 -1                                                          
+                                                                                
+ENTER THE NO OF ELEMENTS OF THE  BOTTOM LIST: 1                                 
+                                                                                
+ENTER THE DATA: 67                                                              
+                                                                                
+PRINT THE LIST:                                                                 
+-1  9  22  32  67  112  120       */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

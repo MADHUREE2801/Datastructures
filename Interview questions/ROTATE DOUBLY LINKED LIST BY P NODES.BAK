@@ -1,0 +1,140 @@
+//ROTATE DOUBLY LINKED LIST BY P NODES
+
+#include<iostream.h>
+#include<conio.h>
+
+class Node
+{
+ public: int data;
+	 Node *next;
+	 Node *prev;
+	 void create();
+	 void print();
+	 void rotate(int p);
+}*head=NULL;
+
+void Node::create()
+{
+ int n,i,data;
+ cout<<"ENTER THE NO OF NODES: ";
+ cin>>n;
+ Node *ptr,*temp;
+ cout<<"\nENTER THE DATA: ";
+ for(i=1;i<=n;i++)
+ {
+  cin>>data;
+  ptr=new Node();
+  ptr->data=data;
+  ptr->next=NULL;
+  ptr->prev=NULL;
+
+  if(head==NULL)
+   head=temp=ptr;
+  else
+  {
+   temp->next=ptr;
+   ptr->prev=temp;
+   temp=ptr;
+  }
+ }
+}
+
+void Node::print()
+{
+ Node *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+
+void Node::rotate(int p)
+{
+ int k=1;
+ Node *ptr=head,*end=head;
+ while(end->next!=NULL)
+  end=end->next;
+ while(k<=p)
+ {
+  end->next=ptr;
+  ptr->prev=end;
+  end=ptr;
+  ptr=ptr->next;
+  end->next=NULL;
+  k++;
+ }
+ head=ptr;
+}
+
+void main()
+{
+ clrscr();
+ Node l;
+ l.create();
+ cout<<"\nPRINT THE LIST: ";
+ l.print();
+ int p;
+ cout<<"\nENTER THE P VALUE: ";
+ cin>>p;
+ l.rotate(p);
+ cout<<"\nPRINT THE LIST AFTER ROTATION: ";
+ l.print();
+ getch();
+}
+
+
+/*
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE P VALUE: 2                                                            
+                                                                                
+PRINT THE LIST AFTER ROTATION:                                                  
+30  40  50  10  20                                                              
+			*/
+                                                                                
+                                                                                
+/*
+
+ENTER THE NO OF NODES: 5
+                                                                                
+ENTER THE DATA: 10 20 30 40 50                                                  
+                                                                                
+PRINT THE LIST:                                                                 
+10  20  30  40  50                                                              
+ENTER THE P VALUE: 4                                                            
+                                                                                
+PRINT THE LIST AFTER ROTATION:                                                  
+50  10  20  30  40    */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
