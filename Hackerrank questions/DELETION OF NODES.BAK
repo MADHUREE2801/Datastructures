@@ -1,0 +1,127 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_list
+{
+public: int data;
+	Linked_list * next;
+	void create(int pos,int data);
+	void Delete(int pos);
+	void Print();
+}*head=NULL;
+void Linked_list::create(int pos,int data)
+{
+Linked_list *temp=head;
+Linked_list *ptr=new Linked_list();
+ptr->data=data;
+ if(pos==0)
+ {
+ ptr->next=head;
+   head=ptr;
+   return ;
+  }
+  int idx=0;
+  while(idx!=pos-1)
+   {
+    idx++;
+    temp=temp->next;
+   }
+  ptr->next=temp->next;
+  temp->next=ptr;
+}
+void Linked_list:: Print()
+{
+ Linked_list * p;
+ p=head;
+ while(p!=NULL)
+ {
+ cout<<"\n"<<p->data;
+ p=p->next;
+ }
+}
+
+void Linked_list::Delete(int pos)
+{
+ Linked_list *k=head,*ptr,*temp;
+ int idx=0;
+ if(pos==0)
+ {
+  head=k->next;
+  delete k;
+  return ;
+ }
+ while(idx!=pos-1)
+ {
+  idx++;
+  k=k->next;
+ }
+ ptr=k->next;
+ temp=ptr->next;
+ k->next=temp;
+ delete ptr;
+}
+
+void main()
+{
+clrscr();
+Linked_list l ;
+int data,pos;
+int n;
+cout<<"\n ENTER THE NO OF NODES:";
+cin>>n;
+int cnt=1;
+while(cnt<=n)
+{
+ cout<<"\n ENTER THE DATA:";
+ cin>>data;
+ cout<<"\n ENTER THE POSITION:";
+ cin>>pos;
+ if(pos<=cnt-1)
+ {
+ l.create(pos,data);
+ l.Print();
+ }
+ else
+ {
+ cout<<"\n INVALID POSITION";
+ }
+ cnt++;
+}
+int p;
+cout<<"\n ENTER THE POSITITON TO BE DELETED:";
+cin>>p;
+l.Delete(p);
+cout<<"\n LINKED LIST AFTER DELETION:";
+l.Print();
+
+getch();
+}
+
+/* OUTPUT
+
+ ENTER THE NO OF NODES:3
+                                                                                
+ ENTER THE DATA:10                                                              
+                                                                                
+ ENTER THE POSITION:0                                                           
+                                                                                
+10                                                                              
+ ENTER THE DATA:20                                                              
+                                                                                
+ ENTER THE POSITION:1                                                           
+                                                                                
+10                                                                              
+20                                                                              
+ ENTER THE DATA:30                                                              
+                                                                                
+ ENTER THE POSITION:2
+                                                                                
+10                                                                              
+20                                                                              
+30                                                                              
+ ENTER THE POSITITON TO BE DELETED:1
+
+ LINKED LIST AFTER DELETION:
+10
+30
+				      */

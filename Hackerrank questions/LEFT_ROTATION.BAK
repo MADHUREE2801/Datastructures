@@ -1,0 +1,106 @@
+#include<iostream.h>
+#include<conio.h>
+void left_rotation(int n,int d,int arr[10])
+{
+int i,temp[10];
+
+for(i=0;i<n;i++) //store the input array in the temp
+ temp[i]=arr[i];
+
+for(i=d;i<n;i++) //perform rotation by bringing the elements from the dth index till the last element to the front
+ arr[i-d]=arr[i];
+
+for(i=n-d;i<n;i++) // copy the remaining elements from temp array to the arr starting right from n-dth index till the end of the arr
+  arr[i]=temp[i-n+d];
+
+}
+
+void main()
+{
+clrscr();
+int arr[10],n,i,d;
+cout<<"\n ENTER THE NO OF ELEMENTS:";
+cin>>n;
+cout<<"\n ENTER THE NO OF ROTATIONS:";
+cin>>d;
+
+cout<<"\n ENTER THE ARRAY:";
+
+for(i=0;i<n;i++)
+ cin>>arr[i];
+
+left_rotation(n,d,arr);
+
+cout<<"\n ARRAY AFTER ROTATION:";
+for(i=0;i<n;i++)
+ cout<<arr[i]<<" ";
+getch();
+}
+
+//OUTPUT:
+/*
+ ENTER THE NO OF ELEMENTS:5
+
+ ENTER THE NO OF ROTATIONS:3
+
+ ENTER THE ARRAY:1 2 3 4 5
+
+ ARRAY AFTER ROTATION:4 5 1 2 3   */
+
+
+
+ /*
+ ENTER THE NO OF ELEMENTS:5
+
+ ENTER THE NO OF ROTATIONS:4
+
+ ENTER THE ARRAY:1 2 3 4 5
+
+ ARRAY AFTER ROTATION:5 1 2 3 4  */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

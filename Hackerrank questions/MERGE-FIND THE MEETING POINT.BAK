@@ -1,0 +1,172 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_List
+{
+ public: int data;
+	 Linked_List *next;
+	 void create(int n);
+	 void print(Linked_List *);
+	 int find_merge();
+ }*head1=NULL,*head2=NULL,*head=NULL;
+
+ void Linked_List:: create(int n)
+ {
+  Linked_List *ptr=head,*temp;
+  int data;
+  int i;
+  cout<<"\n MAIN LIST";
+  for(i=1;i<=n;i++)
+  {
+   ptr=new Linked_List();
+   cout<<"\n ENTER THE DATA:";
+   cin>>data;
+   if(head==NULL)
+   {
+    ptr->data=data;
+    head=temp=ptr;
+    ptr->next=NULL;
+   }
+   else
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    temp->next=ptr;
+    temp=ptr;
+   }
+  }
+   Linked_List *ptr1=head1,*ptr2=head2;
+  int k;
+  i=1;
+  cout<<"\n LIST 1";
+  cout<<"\n ENTER THE NO OF NODES OF LIST1:";
+  cin>>k;
+  while(i<=k)
+  {
+  ptr1=new Linked_List();
+  cout<<"\n  ENTER THE DATA:";
+  cin>>data;
+   if(head1==NULL)
+   {
+    ptr1->data=data;
+    ptr1->next=NULL;
+    head1=temp=ptr1;
+   }
+    else
+   {
+   ptr1->data=data;
+   ptr1->next=NULL;
+   temp->next=ptr1;
+   temp=ptr1;
+   }
+   i++;
+ }
+ ptr1->next=head;
+
+i=1;
+cout<<"\n LIST 2";
+cout<<"\n ENTER THE NO OF NODES OF LIST2:";
+cin>>k;
+
+while(i<=k)
+  {
+  ptr2=new Linked_List();
+  cout<<"\n  ENTER THE DATA:";
+  cin>>data;
+   if(head2==NULL)
+   {
+    ptr2->data=data;
+    ptr2->next=NULL;
+    head2=temp=ptr2;
+   }
+    else
+   {
+   ptr2->data=data;
+   temp->next=ptr2;
+   temp=ptr2;
+   }
+   i++;
+ }
+ ptr2->next=head;
+
+}
+
+void Linked_List:: print(Linked_List *head)
+{
+ Linked_List *ptr=head;
+
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"\t";
+  ptr=ptr->next;
+ }
+}
+int Linked_List:: find_merge()
+{
+ Linked_List *ptr1,*ptr2;
+ ptr1=head1;
+ ptr2=head2;
+ while(ptr1!=NULL)
+ {
+  while(ptr2!=NULL)
+  {
+   if(ptr1==ptr2)
+    return ptr1->data;
+
+   else
+    ptr2=ptr2->next;
+  }
+   ptr1=ptr1->next;
+   ptr2=head;
+ }
+}
+
+
+void main()
+{
+ clrscr();
+ int n;
+ Linked_List l;
+ cout<<"\n ENTER THE NO OF NODES OF MAIN LIST:";
+ cin>>n;
+ l.create(n);
+ cout<<"\n MAIN LIST: ";
+ l.print(head);
+ cout<<"\n List 1: ";
+ l.print(head1);
+ cout<<"\n List 2: ";
+ l.print(head2);
+ int res=l.find_merge();
+ cout<<"\n MEET="<<res;
+ getch();
+}
+
+
+/* ouptut
+
+ ENTER THE NO OF NODES OF MAIN LIST:3
+                                                                                
+ MAIN LIST                                                                      
+ ENTER THE DATA:3                                                               
+                                                                                
+ ENTER THE DATA:4                                                               
+                                                                                
+ ENTER THE DATA:5                                                               
+                                                                                
+ LIST 1                                                                         
+ ENTER THE NO OF NODES OF LIST1:2                                               
+                                                                                
+  ENTER THE DATA:1                                                              
+                                                                                
+  ENTER THE DATA:2                                                              
+                                                                                
+ LIST 2                                                                         
+ ENTER THE NO OF NODES OF LIST2:1                                               
+                                                                                
+  ENTER THE DATA:1                                                              
+
+ MAIN LIST: 3   4       5
+ List 1: 1      2       3       4       5
+ List 2: 1      3       4       5
+ MEET=3
+			   */

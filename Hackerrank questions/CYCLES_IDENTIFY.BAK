@@ -1,0 +1,118 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_List
+{
+ public: int data;
+	 Linked_List *next;
+	 void create(int n); // cylce:1->2->3->2(connecting the link of 3 to 2)
+
+	 int check_cycle();
+
+ }*head=NULL;
+
+void Linked_List :: create(int n)
+{
+ Linked_List *ptr,*temp;
+ int i,data;
+
+ for(i=1;i<=n;i++)
+ {
+  ptr=new Linked_List();
+  cout<<"\n ENTER THE DATA:";
+  cin>>data;
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+  /* create a link between last node and the node present anywhere
+		before last node    */
+  ptr=head;
+  Linked_List *tail=head;
+  while(tail->next!=NULL)
+  {
+   tail=tail->next;
+  }
+  i=0;
+  int pos;
+  cout<<"\n ENTER THE POSITION WHERE THE LINK SHOULD BE CREATED:";
+  cin>>pos;
+
+  for(i=0;i<pos;i++)
+  {
+   ptr=ptr->next;
+
+  }
+  tail->next=ptr;
+
+ }
+
+
+int Linked_List::check_cycle()
+{
+ Linked_List *fast=head,*slow=head;
+
+ while(fast!=NULL && slow!=NULL && fast->next!=NULL)
+ {
+  fast=fast->next->next;
+  slow=slow->next;
+  if(fast==slow)
+   return 1;
+  }
+ return 0;
+}
+
+
+
+void main()
+{
+ clrscr();
+ int n;
+ cout<<"\n ENTER THE NO OF NODES:";
+ cin>>n;
+ Linked_List l;
+ l.create(n);
+ int res=l.check_cycle();
+ if(res==1)
+  cout<<"\n There is a cycle";
+ else
+  cout<<"\n NO cycles";
+ getch();
+}
+
+/* output
+
+ ENTER THE NO OF NODES:5                                                        
+                                                                                
+ ENTER THE DATA:10                                                              
+                                                                                
+ ENTER THE DATA:20                                                              
+                                                                                
+ ENTER THE DATA:30                                                              
+                                                                                
+ ENTER THE DATA:40                                                              
+                                                                                
+ ENTER THE DATA:50                                                              
+                                                                                
+ ENTER THE POSITION WHERE THE LINK SHOULD BE CREATED:2                          
+
+ There is a cycle            */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

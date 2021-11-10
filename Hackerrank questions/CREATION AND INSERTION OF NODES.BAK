@@ -1,0 +1,102 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_list
+{
+public:
+	 int data;
+	 Linked_list *next;
+      void fun(int data,int pos);
+      void print();
+}*head=NULL;
+
+void Linked_list:: fun(int data,int pos)
+{
+ Linked_list * temp=head;
+ Linked_list * ptr=new Linked_list();
+ ptr->data=data;
+ if(pos==0)
+ {
+   ptr->next=head;
+   head=ptr;
+   return ;
+  }
+  int idx=0;
+  while(idx!=pos-1)
+   {
+    idx++;
+    temp=temp->next;
+   }
+  ptr->next=temp->next;
+  temp->next=ptr;
+}
+void Linked_list:: print()
+{
+ Linked_list * p;
+ p=head;
+ while(p!=NULL)
+ {
+ cout<<"\n"<<p->data;
+ p=p->next;
+ }
+}
+
+
+void main()
+{
+clrscr();
+Linked_list l ;
+int data,pos;
+int n;
+cout<<"\n ENTER THE NO OF NODES:";
+cin>>n;
+int cnt=1;
+while(cnt<=n)
+{
+ cout<<"\n ENTER THE DATA:";
+ cin>>data;
+ cout<<"\n ENTER THE POSITION:";
+ cin>>pos;
+ if(pos<=cnt-1)
+ {
+ l.fun(data,pos);
+ l.print();
+ }
+ else
+ {
+ cout<<"\n INVALID POSITION";
+ }
+ cnt++;
+}
+getch();
+}
+
+
+
+//OUTPUT
+/* ENTER THE DATA:30
+
+ ENTER THE POSITION:2
+
+10
+20
+30
+ ENTER THE DATA:25
+
+ ENTER THE POSITION:2
+
+10
+20
+25
+30
+ ENTER THE DATA:15
+
+ ENTER THE POSITION:1
+
+10
+15
+20
+25
+30Null pointer assignment
+
+*/

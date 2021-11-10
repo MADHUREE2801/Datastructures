@@ -1,0 +1,49 @@
+#include<iostream.h>
+#include<conio.h>
+
+void fun(int n,int r,int c,int queries[10][10])
+{
+int arr[10];
+int i,j,temp;
+for(i=0;i<n;i++)
+ arr[i]=0;
+for(i=0;i<r;i++)
+{
+  j=0;
+  temp=queries[i][j];
+  while(temp<=queries[i][j+1])
+  {
+    arr[temp-1]+=queries[i][c-1];
+    temp++;
+  }
+}                                    /* 2-D array is 1 2 100
+						     2 5 100
+						     3 4 100 */
+
+				     // 1-D array 100 200 200 200 100 max=200
+
+int max=arr[0];
+for(i=1;i<n;i++)
+ if(max<arr[i])
+   max=arr[i];
+cout<<"\n MAXIMUM VALUE IS:"<<max;
+}
+void main()
+{
+clrscr();
+int n,r,c,i,j;
+int queries[10][10];
+cout<<"\n ENTER THE NO OF ELEMENTS IN AN ARRAY:";
+cin>>n;
+cout<<"\n ENTER THE NO OF ROWS AND COLUMNS:";
+cin>>r>>c;
+cout<<"ENTER THE 2-D ARRAY:";
+for(i=0;i<r;i++)
+{
+ for(j=0;j<c;j++)
+  cin>>queries[i][j];
+}
+fun(n,r,c,queries);
+getch();
+}
+

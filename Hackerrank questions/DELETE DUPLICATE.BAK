@@ -1,0 +1,115 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_List
+{
+ public: int data;
+	 Linked_List *next;
+	 void create(int n);  /* input should be given in the sorted form
+				 (ascending order)   */
+
+	 void print();
+	 void DEL_DUPLICATE();
+
+ }*head=NULL;
+
+void Linked_List :: create(int n)
+{
+ Linked_List *ptr,*temp;
+ int i,data;
+
+ for(i=1;i<=n;i++)
+ {
+  ptr=new Linked_List();
+  cout<<"\n ENTER THE DATA:";
+  cin>>data;
+  if(head==NULL)
+  {
+   ptr->data=data;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+}
+
+void Linked_List :: print()
+{
+ Linked_List *ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"\n";
+  ptr=ptr->next;
+ }
+}
+
+void Linked_List :: DEL_DUPLICATE()
+{
+ Linked_List *ptr=head,*k;
+ while(ptr!=NULL)
+ {
+  k=ptr->next;
+  while(k!=NULL)
+  {
+   if(ptr->data==k->data)
+   {
+    Linked_List *temp=k;
+    k=k->next;
+    ptr->next=temp->next;
+    delete temp;
+   }
+   else
+   {
+    k=k->next;
+   }
+  }
+  ptr=ptr->next;
+}
+}
+void main()
+{
+ clrscr();
+ int n;
+ cout<<"\n ENTER THE NO OF NODES:";
+ cin>>n;
+ Linked_List l;
+ l.create(n);
+ cout<<"\n PRINT THE LIST:";
+ l.print();
+ l.DEL_DUPLICATE();
+ cout<<"\n PRINT THE LIST AFTER DELETING DUPLICATE:";
+ l.print();
+ getch();
+}
+
+/* output
+
+ ENTER THE NO OF NODES:5
+
+ ENTER THE DATA:1
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ ENTER THE DATA:3                                                               
+                                                                                
+ PRINT THE LIST:                                                                
+1                                                                               
+2                                                                               
+2                                                                               
+2                                                                               
+3                                                                               
+                                                                                
+ PRINT THE LIST AFTER DELETING DUPLICATE:
+1
+2
+3
+					      */

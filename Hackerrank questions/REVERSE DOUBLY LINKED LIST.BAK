@@ -1,0 +1,111 @@
+#include<iostream.h>
+#include<conio.h>
+
+class doubly_list
+{
+ public: int data;
+	 doubly_list *prev;
+	 doubly_list *next;
+	 void create(int n);
+	 void print();
+	 void reverse();
+ }*head=NULL;
+
+ void doubly_list :: create(int n)
+ {
+  doubly_list * ptr,*temp;
+  int i;
+  for(i=1;i<=n;i++)
+  {
+   ptr=new doubly_list();
+   cout<<"\n ENTER THE DATA:";
+   cin>>data;
+   if(head==NULL)
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    ptr->prev=NULL;
+    head=temp=ptr;
+   }
+   else
+   {
+    ptr->data=data;
+    ptr->next=NULL;
+    temp->next=ptr;
+    ptr->prev=temp;
+    temp=ptr;
+   }
+  }
+ }
+
+ void doubly_list:: print()
+ {
+  doubly_list *ptr=head;
+  while(ptr!=NULL)
+  {
+   cout<<ptr->data<<"\t";
+   ptr=ptr->next;
+  }
+ }
+
+ void doubly_list:: reverse()
+ {
+  doubly_list *ptr=head,*temp;
+  while(ptr->next!=NULL)
+  {
+   ptr=ptr->next;
+  }
+  head=ptr;
+  while(ptr!=NULL)
+  {
+   temp=ptr->prev;
+   ptr->prev=ptr->next;
+   ptr->next=temp;
+   ptr=ptr->next;
+  }
+ }
+
+ void main()
+ {
+  clrscr();
+  int n;
+  cout<<"\n ENTER THE NO OF NODES:";
+  cin>>n;
+  doubly_list l;
+  l.create(n);
+  cout<<"\n PRINT: ";
+  l.print();
+  l.reverse();
+  cout<<"\n PRINT AFTER REVERSING: ";
+  l.print();
+  getch();
+ }
+
+
+/* output
+
+
+ ENTER THE NO OF NODES:4                                                        
+                                                                                
+ ENTER THE DATA:1                                                               
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ ENTER THE DATA:3                                                               
+                                                                                
+ ENTER THE DATA:4                                                               
+                                                                                
+ PRINT: 1       2       3       4                                               
+ PRINT AFTER REVERSING: 4       3       2       1      */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

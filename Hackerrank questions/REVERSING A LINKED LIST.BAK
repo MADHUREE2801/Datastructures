@@ -1,0 +1,118 @@
+#include<iostream.h>
+#include<conio.h>
+class Linked_list
+{
+public:
+	 int data;
+	 Linked_list *next;
+      void create(int data,int pos);
+      void reverse_linked_list();
+      void print();
+}*head=NULL;
+
+void Linked_list:: create(int data,int pos)
+{
+ Linked_list * temp=head;
+ Linked_list * ptr=new Linked_list();
+ ptr->data=data;
+ if(pos==0)
+ {
+   ptr->next=head;
+   head=ptr;
+   return ;
+  }
+  int idx=0;
+  while(idx!=pos-1)
+   {
+    idx++;
+    temp=temp->next;
+   }
+  ptr->next=temp->next;
+  temp->next=ptr;
+}
+void Linked_list::reverse_linked_list()
+{
+Linked_list *prev,*curr,*nxt;
+prev=nxt=NULL;
+curr=head;
+while(curr!=NULL)
+{
+  nxt=curr->next;
+  curr->next=prev;
+  prev=curr;
+  curr=nxt;
+}
+head=prev;
+
+}
+void Linked_list:: print()
+{
+ Linked_list * p;
+ p=head;
+ while(p!=NULL)
+ {
+ cout<<"\n"<<p->data;
+ p=p->next;
+ }
+}
+
+
+void main()
+{
+clrscr();
+Linked_list l ;
+int data,pos;
+int n;
+cout<<"\n ENTER THE NO OF NODES:";
+cin>>n;
+int cnt=1;
+while(cnt<=n)
+{
+ cout<<"\n ENTER THE DATA:";
+ cin>>data;
+ cout<<"\n ENTER THE POSITION:";
+ cin>>pos;
+ if(pos<=cnt-1)
+ {
+ l.create(data,pos);
+ l.print();
+ }
+ else
+ {
+ cout<<"\n INVALID POSITION";
+ }
+ cnt++;
+}
+l.reverse_linked_list();
+cout<<"\n LINKED LIST AFTER REVERSING :\n";
+l.print();
+getch();
+}
+
+/*OUTPUT
+30
+ ENTER THE DATA:40
+
+ ENTER THE POSITION:3
+
+10
+20
+30
+40
+ ENTER THE DATA:50
+
+ ENTER THE POSITION:4
+
+10
+20
+30
+40
+50
+ LINKED LIST AFTER REVERSING :
+
+50
+40
+30
+20
+10
+*/

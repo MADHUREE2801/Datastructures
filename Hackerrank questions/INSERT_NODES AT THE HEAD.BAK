@@ -1,0 +1,80 @@
+#include<iostream.h>
+#include<conio.h>
+
+class LinkedList
+{
+ public: int data;
+	 LinkedList *next;
+	 void insert_at_head(int n); //new way of creating a list
+	 void print();
+ }*head=NULL;
+
+ void LinkedList:: insert_at_head(int n)
+ {
+  int i,data;
+  LinkedList *ptr;
+  for(i=1;i<=n;i++)
+  {
+   ptr=new LinkedList;
+   cout<<"\n ENETR THE DATA:";
+   cin>>data;
+    ptr->data=data;
+    ptr->next=head;
+    head=ptr;
+  }
+ }
+
+void LinkedList:: print()
+{
+ LinkedList *ptr;
+ ptr=head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<" ";
+  ptr=ptr->next;
+ }
+}
+
+void main()
+{
+ clrscr();
+ int n;
+ cout<<"\n ENTER THE NO OF NODES:";
+ cin>>n;
+ LinkedList l;
+ l.insert_at_head(n);
+ cout<<"\n PRINT:";
+ l.print();
+ getch();
+}
+
+
+/* output
+
+ ENTER THE NO OF NODES:5
+
+ ENETR THE DATA:10
+
+ ENETR THE DATA:20
+
+ ENETR THE DATA:30
+
+ ENETR THE DATA:40
+
+ ENETR THE DATA:50
+				      //Linked List : 50->40->30->20->10
+ PRINT:
+50 40 30 20 10    */
+
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+

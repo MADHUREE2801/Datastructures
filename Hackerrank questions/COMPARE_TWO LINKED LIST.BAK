@@ -1,0 +1,174 @@
+#include<iostream.h>
+#include<conio.h>
+
+class LinkedList
+{
+public: int data;
+	LinkedList *next;
+	void create(int n,LinkedList **);
+	void print(LinkedList **);
+	int compare();
+
+}*head1=NULL,*head2=NULL;
+
+void LinkedList:: create(int n,LinkedList **head)
+{
+  LinkedList *ptr,*temp;
+  int i,data;
+  for(i=1;i<=n;i++)
+  {
+   ptr=new LinkedList();
+   cout<<"\n ENTER THE DATA:";
+   cin>>data;
+   if(*head==NULL)
+   {
+    *head=temp=ptr;
+    ptr->data=data;
+    ptr->next=NULL;
+
+   }
+    else
+    {
+     ptr->data=data;
+     ptr->next=NULL;
+     temp->next=ptr;
+     temp=ptr;
+    }
+  }
+}
+
+void LinkedList:: print(LinkedList **head)
+{
+ LinkedList *ptr;
+ ptr=*head;
+ cout<<"\n";
+ while(ptr!=NULL)
+ {
+  cout<<ptr->data<<"  ";
+  ptr=ptr->next;
+ }
+}
+int LinkedList:: compare()
+{
+ LinkedList *ptr1,*ptr2;
+ ptr1=head1;
+ ptr2=head2;
+ int cnt1=0,cnt2=0;
+ while(ptr1!=NULL)
+ {
+  cnt1++;
+  ptr1=ptr1->next;
+ }
+ while(ptr2!=NULL)
+ {
+  cnt2++;
+  ptr2=ptr2->next;
+ }
+
+ int flag=1;
+
+ if(cnt1==cnt2)
+ {
+  while(ptr1!=NULL)
+  {
+   if(ptr1->data!=ptr2->data)
+   {
+    flag=0;
+    break;
+   }
+   else
+   {
+    ptr1=ptr1->next;
+    ptr2=ptr2->next;
+    }
+  }
+
+   if(flag==1)
+     return 1;
+   else
+     return 0;
+ }
+ else
+  return 0;
+}
+
+void main()
+{
+ clrscr();
+ int n;
+ LinkedList l;
+ cout<<"\n ENTER THE NO OF NODES:";
+ cin>>n;
+ l.create(n,&head1);
+ cout<<"\n ENTER THE NO OF NODES:";
+ cin>>n;
+ l.create(n,&head2);
+ cout<<"\n LINKED LIST1:";
+ l.print(&head1);
+ cout<<"\n LINKED LIST2:";
+ l.print(&head2);
+ int res= l.compare();
+ if(res==0)
+  cout<<"\n THEY ARE NOT EQUAL";
+ else
+  cout<<"\n THEY ARE EQUAL";
+ getch();
+}
+
+
+
+/* output
+
+ ENTER THE NO OF NODES:3
+
+ ENTER THE DATA:10
+
+ ENTER THE DATA:20
+
+ ENTER THE DATA:30
+
+ ENTER THE NO OF NODES:3
+
+ ENTER THE DATA:10
+
+ ENTER THE DATA:20
+
+ ENTER THE DATA:30
+
+ LINKED LIST1:
+10  20  30
+ LINKED LIST2:
+10  20  30
+
+
+ THEY ARE EQUAL */
+
+ /*
+ ENTER THE NO OF NODES:3                                                        
+                                                                                
+ ENTER THE DATA:10                                                              
+                                                                                
+ ENTER THE DATA:20                                                              
+                                                                                
+ ENTER THE DATA:30                                                              
+                                                                                
+ ENTER THE NO OF NODES:2                                                        
+                                                                                
+ ENTER THE DATA:1                                                               
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ LINKED LIST1:                                                                  
+10  20  30                                                                      
+ LINKED LIST2:                                                                  
+1  2                                                                            
+ THEY ARE NOT EQUAL   */
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+
+
+

@@ -1,0 +1,109 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_List
+{
+ public: int data;
+	 Linked_List *next;
+	 void create(int n);
+	 void print();
+	 int getnode(int pos,int n);
+ }*head=NULL;
+
+ void Linked_List::create(int n)
+ {
+
+  Linked_List * ptr;
+  Linked_List *temp;
+  int data,i;
+  for(i=1;i<=n;i++)
+  {
+  ptr=new Linked_List();
+
+  cout<<"\n ENTER THE DATA:";
+  cin>>data;
+  if(head==NULL)
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   head=temp=ptr;
+  }
+  else
+  {
+   ptr->data=data;
+   ptr->next=NULL;
+   temp->next=ptr;
+   temp=ptr;
+  }
+ }
+ }
+ void Linked_List::print()
+ {
+ Linked_List *ptr=head;
+ while(ptr!=NULL)
+ {
+  cout<<"\n"<<ptr->data;
+  ptr=ptr->next;
+ }
+}
+
+int Linked_List::getnode(int pos,int n) //posititon from tail
+{
+ int arr[100];
+ Linked_List *ptr=head;
+ int i=0;
+ while(ptr!=NULL)
+ {
+  arr[i]=ptr->data;
+  ptr=ptr->next;
+  i++;
+ }
+ int k=n-pos-1;
+ return arr[k];
+
+}
+
+void main()
+{
+ clrscr();
+ int n;
+ cout<<"\n ENTER THE NUMBER OF NODES:";
+ cin>>n;
+ Linked_List l;
+ l.create(n);
+ l.print();
+ cout<<"\n GET NODE";
+ int pos;
+ cout<<"\n ENTER THE POSITITON FROM TAIL:";
+ cin>>pos;
+ int res=l.getnode(pos,n);
+ cout<<"\n VALUE AT POSITION"<<pos<<" ="<<res;
+ getch();
+ }
+
+ /* output
+
+ ENTER THE NUMBER OF NODES:5                                                    
+                                                                                
+ ENTER THE DATA:5                                                               
+                                                                                
+ ENTER THE DATA:4                                                               
+                                                                                
+ ENTER THE DATA:3                                                               
+                                                                                
+ ENTER THE DATA:2                                                               
+                                                                                
+ ENTER THE DATA:1                                                               
+                                                                                
+5                                                                               
+4                                                                               
+3                                                                               
+2                                                                               
+1                                                                               
+ GET NODE                                                                       
+ ENTER THE POSITITON FROM TAIL:3        */
+                                                                                
+ VALUE AT POSITION3 =4                                                          
+                                                                                
+                                                                                
+                                                                                

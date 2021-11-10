@@ -1,0 +1,75 @@
+// 2-D HOUR GLASS PROBLEM
+#include<iostream.h>
+#include<conio.h>
+int max_sum=-63; //7*-9(range of each vlue is from -9 to 9)
+// -63 is the minimum sum of an hour glass
+int offset=2;
+
+int hour_glass(int i,int j, int arr[6][6])  //calculating the sum for each hour glass
+{
+int k=0,tmp=0;
+for(k=j;k<=j+offset;k++)
+{
+tmp+=arr[i][k];
+tmp+=arr[i+offset][k];
+}
+tmp+=arr[i+1][j+1];
+if(max_sum<tmp)
+ max_sum=tmp;
+
+return max_sum;
+
+}
+
+void main()
+{
+clrscr();
+int r=6,c=6;
+int i,j;
+int arr[6][6]; // 6X6 2D array
+cout<<"\n ENTER THE ARRAY:";
+//read the array
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+ cin>>arr[i][j];
+}
+int result=0;
+// calling the function
+for(i=0;i<r-offset;i++)
+{
+for(j=0;j<c-offset;j++)
+ result=hour_glass(i,j,arr);
+}
+cout<<"\n THE MAXIMUM SUM IS:"<<result;
+getch();
+}
+
+
+
+// output
+
+ ENTER THE ARRAY:1 1 1 0 0 0                                                    
+0 1 0 0 0 0                                                                     
+1 1 1 0 0 0                                                                     
+0 0 2 4 4 0                                                                     
+0 0 0 2 0 0                                                                     
+0 0 1 2 4 0                                                                     
+                                                                                
+ THE MAXIMUM SUM IS:19                                                          
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                

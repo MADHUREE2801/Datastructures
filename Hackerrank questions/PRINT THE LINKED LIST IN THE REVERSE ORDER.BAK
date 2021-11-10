@@ -1,0 +1,128 @@
+#include<iostream.h>
+#include<conio.h>
+
+class Linked_list
+{
+public:
+	 int data;
+	 Linked_list *next;
+      void create(int data,int pos);
+      void print();
+      void reverse_print();
+}*head=NULL;
+
+void Linked_list:: create(int data,int pos)
+{
+ Linked_list * temp=head;
+ Linked_list * ptr=new Linked_list();
+ ptr->data=data;
+ if(pos==0)
+ {
+   ptr->next=head;
+   head=ptr;
+   return ;
+  }
+  int idx=0;
+  while(idx!=pos-1)
+   {
+    idx++;
+    temp=temp->next;
+   }
+  ptr->next=temp->next;
+  temp->next=ptr;
+}
+void Linked_list:: print()
+{
+ Linked_list * p;
+ p=head;
+ while(p!=NULL)
+ {
+ cout<<"\n"<<p->data;
+ p=p->next;
+ }
+}
+
+
+
+void Linked_list::reverse_print()
+{
+Linked_list *ptr=head;
+int cnt=0;
+while(ptr!=NULL)
+{
+ cnt++;
+ ptr=ptr->next;
+}
+const int len=cnt;
+int arr[100];
+int i=0;
+ptr=head;
+while(ptr!=NULL)
+{
+arr[i]=ptr->data;
+i++;
+ptr=ptr->next;
+}
+for(i=len-1;i>=0;i--)
+ cout<<arr[i]<<"\n";
+}
+
+void main()
+{
+clrscr();
+Linked_list l ;
+int data,pos;
+int n;
+cout<<"\n ENTER THE NO OF NODES:";
+cin>>n;
+int cnt=1;
+while(cnt<=n)
+{
+ cout<<"\n ENTER THE DATA:";
+ cin>>data;
+ cout<<"\n ENTER THE POSITION:";
+ cin>>pos;
+ if(pos<=cnt-1)
+ {
+ l.create(data,pos);
+ l.print();
+ }
+ else
+ {
+ cout<<"\n INVALID POSITION";
+ }
+ cnt++;
+}
+cout<<"\n PRINT LINKED LIST IN REVERSE ORDER:\n";
+l.reverse_print();
+getch();
+}
+
+
+
+/* 30
+ ENTER THE DATA:40                                                              
+                                                                                
+ ENTER THE POSITION:3                                                           
+                                                                                
+10                                                                              
+20                                                                              
+30                                                                              
+40                                                                              
+ ENTER THE DATA:50                                                              
+                                                                                
+ ENTER THE POSITION:4                                                           
+                                                                                
+10                                                                              
+20                                                                              
+30                                                                              
+40                                                                              
+50                                                                              
+ PRINT LINKED LIST IN REVERSE ORDER:                                            
+50                                                                              
+40
+30
+20
+10
+
+       */
